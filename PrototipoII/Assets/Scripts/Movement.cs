@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -6,6 +5,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed;
     private void Update()
     {
-        gameObject.transform.Translate(Vector3.down * speed * Time.deltaTime);
+        gameObject.transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
