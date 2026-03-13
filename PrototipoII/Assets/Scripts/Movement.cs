@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour
     // Moverse al punto especificado con el raton
     public void MoveToPoint(Vector3 destination)
     {
+        navMeshAgent.isStopped = false; // Permitir movimiento
+        
         // Si es el primer punto, ir directamente al destino
         if (!navMeshAgent.hasPath && !navMeshAgent.pathPending)
         {
@@ -46,9 +48,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    // ===== Getters y setters =====
-    public bool GetIsDestinationQueue()
+    // Detener al player
+    public void StopMoving()
     {
-        return navMeshAgent.hasPath || navMeshAgent.pathPending || destinationQueue.Count > 0;
+        destinationQueue.Clear();   // Limpiar cola de destinos
+        
+        if( navMeshAgent.hasPath)   // Si el agente tiene un camino, limpiarlo
+            navMeshAgent.ResetPath();
+        navMeshAgent.isStopped = true;  // Bloquear movimiento
+        
+        Debug.Log("Movement stopped");
     }
 }

@@ -23,6 +23,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CancelMove",
+                    "type": "Button",
+                    "id": "f45338af-3f9a-434c-8b18-9de00b2e9ecd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -41,10 +50,21 @@
                     "name": "",
                     "id": "91960af7-c935-4fe9-b8e8-f5f13f005b25",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "577e2df3-4e81-42cd-8182-a70862eed7ed",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

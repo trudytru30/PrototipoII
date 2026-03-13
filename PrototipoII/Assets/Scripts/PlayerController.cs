@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
@@ -35,6 +36,13 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
             movement.MoveToPoint(hit.point);
         
         Debug.Log("Move");
+    }
+    
+    // Cancelacion de movimiento
+    public void OnCancelMove(InputAction.CallbackContext context)
+    {
+        // Limpiar la lista de destinos de movimiento y hacer que el player se quede quieto
+        movement.StopMoving();
     }
     
     // Accion de apuntar
