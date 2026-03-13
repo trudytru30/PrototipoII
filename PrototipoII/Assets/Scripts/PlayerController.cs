@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
 {
     [SerializeField] private Camera cam;
     [SerializeField] private Movement movement;
+    
+    
     
     private PlayerActions inputs;
     private void Awake()
@@ -25,17 +26,33 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
         inputs.Gameplay.Disable();
     }
     
-    // Accion de moverse
+    // Accion de moverse (normal)
     public void OnMove(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            bool slowWalk = Keyboard.current[Key.LeftShift].isPressed;
+            movement.MoveToPoint(slowWalk ? MovementType.Walk : MovementType.Normal, hit.point);
+        }
+        
+        Debug.Log("Move");
+    }
+    
+    // Accion de moverse (corriendo)
+    public void OnRun(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         
         if(Physics.Raycast(ray, out RaycastHit hit))
-            movement.MoveToPoint(hit.point);
+            movement.MoveToPoint(MovementType.Run, hit.point);
         
-        Debug.Log("Move");
+        Debug.Log("Run");
     }
     
     // Cancelacion de movimiento

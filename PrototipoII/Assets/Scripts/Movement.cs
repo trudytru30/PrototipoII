@@ -4,15 +4,16 @@ using System.Collections.Generic;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float speed = 10;
-    
+    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] private float normalSpeed = 5f;
+    [SerializeField] private float runSpeed = 8f;
+
     private NavMeshAgent navMeshAgent;
     private Queue<Vector3> destinationQueue = new Queue<Vector3>();
-
+    
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.speed = speed; // Velocidad máxima del agente NavMesh
     }
 
     private void Update()
@@ -24,39 +25,58 @@ public class Movement : MonoBehaviour
             navMeshAgent.SetDestination(nextDestination);
         }
     }
-    
+
     private bool HasReachedDestination()
     {
         return !navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance &&
                (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f);
     }
-    
+
     // Moverse al punto especificado con el raton
-    public void MoveToPoint(Vector3 destination)
+    public void MoveToPoint(MovementType type, Vector3 destination)
     {
-        navMeshAgent.isStopped = false; // Permitir movimiento
+        destinationQueue.Clear();
+        navMeshAgent.ResetPath();
         
-        // Si es el primer punto, ir directamente al destino
-        if (!navMeshAgent.hasPath && !navMeshAgent.pathPending)
+        navMeshAgent.isStopped = false; // Permitir movimiento
+
+        // Moverse en base al tipo de movimiento seleccionado
+        switch (type)
         {
-            navMeshAgent.SetDestination(destination);
+            case MovementType.Walk:
+                navMeshAgent.speed = walkSpeed;
+                break;
+            case MovementType.Normal:
+                navMeshAgent.speed = normalSpeed;
+                break;
+            case MovementType.Run:
+                navMeshAgent.speed = runSpeed;
+                break;
         }
-        // Si ya se está moviendo, poner en cola el siguiente destino
-        else
-        {
-            destinationQueue.Enqueue(destination);
-        }
+        
+        navMeshAgent.SetDestination(destination);
     }
 
     // Detener al player
     public void StopMoving()
     {
-        destinationQueue.Clear();   // Limpiar cola de destinos
-        
-        if( navMeshAgent.hasPath)   // Si el agente tiene un camino, limpiarlo
+        destinationQueue.Clear(); // Limpiar cola de destinos
+
+        if (navMeshAgent.hasPath) // Si el agente tiene un camino, limpiarlo
             navMeshAgent.ResetPath();
-        navMeshAgent.isStopped = true;  // Bloquear movimiento
-        
+        navMeshAgent.isStopped = true; // Bloquear movimiento
+
         Debug.Log("Movement stopped");
+    }
+
+    // ===== Getters y Setters =====
+    public void SetSpeed(float speed)
+    {
+        navMeshAgent.speed = speed;
+    }
+    
+    public float GetSpeed()
+    {
+        return navMeshAgent.speed;
     }
 }
