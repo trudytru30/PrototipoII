@@ -1,4 +1,4 @@
 public enum MovementType
 {
-    Walk, Normal, Run
+    Crouch, Walk, Run
 }

@@ -654,6 +654,9 @@ PrefabInstance:
       insertIndex: 5
       addedObject: {fileID: 739325646}
     - targetCorrespondingSourceObject: {fileID: 1768667454981247352, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 3041894466452919042}
+    - targetCorrespondingSourceObject: {fileID: 1768667454981247352, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3041894466452919036}
   m_SourcePrefab: {fileID: 100100000, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
@@ -690,6 +693,21 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3041894466452919042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739325638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5fdf3f80224fa48a6c7dab7ba7df2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionController
+  lowerBodyState: 0
+  upperBodyState: 0
+  fullBodyState: 0
 --- !u!1001 &5563196650848109648
 PrefabInstance:
   m_ObjectHideFlags: 0

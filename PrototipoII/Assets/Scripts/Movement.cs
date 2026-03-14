@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed = 2f;
-    [SerializeField] private float normalSpeed = 5f;
+    [SerializeField] private float crouchSpeed = 2f;
+    [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 8f;
 
     private NavMeshAgent navMeshAgent;
@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    
     private void Update()
     {
         // Si el agente ha llegado al destino y hay más destinos en la cola, procesar el siguiente
@@ -24,12 +25,6 @@ public class Movement : MonoBehaviour
             Vector3 nextDestination = destinationQueue.Dequeue();
             navMeshAgent.SetDestination(nextDestination);
         }
-    }
-
-    private bool HasReachedDestination()
-    {
-        return !navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance &&
-               (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f);
     }
 
     // Moverse al punto especificado con el raton
@@ -43,11 +38,11 @@ public class Movement : MonoBehaviour
         // Moverse en base al tipo de movimiento seleccionado
         switch (type)
         {
+            case MovementType.Crouch:
+                navMeshAgent.speed = crouchSpeed;
+                break;
             case MovementType.Walk:
                 navMeshAgent.speed = walkSpeed;
-                break;
-            case MovementType.Normal:
-                navMeshAgent.speed = normalSpeed;
                 break;
             case MovementType.Run:
                 navMeshAgent.speed = runSpeed;
@@ -57,6 +52,13 @@ public class Movement : MonoBehaviour
         navMeshAgent.SetDestination(destination);
     }
 
+    // Comprobar si el agente ha llegado al destino
+    public bool HasReachedDestination()
+    {
+        return !navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance &&
+               (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f);
+    }
+    
     // Detener al player
     public void StopMoving()
     {
@@ -65,7 +67,7 @@ public class Movement : MonoBehaviour
         if (navMeshAgent.hasPath) // Si el agente tiene un camino, limpiarlo
             navMeshAgent.ResetPath();
         navMeshAgent.isStopped = true; // Bloquear movimiento
-
+        
         Debug.Log("Movement stopped");
     }
 
@@ -78,5 +80,10 @@ public class Movement : MonoBehaviour
     public float GetSpeed()
     {
         return navMeshAgent.speed;
+    }
+
+    public bool IsStopped()
+    {
+        return navMeshAgent.isStopped;
     }
 }
