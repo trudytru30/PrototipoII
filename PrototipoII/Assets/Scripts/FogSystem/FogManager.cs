@@ -1,16 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FogManager : MonoBehaviour
 {
     public static FogManager Instance;
 
+    [Header("Map Settings")]
+    [SerializeField] private LayerMask obstaclesMask;
     [SerializeField] private Transform mapTransform;
-    [SerializeField] private int mapWidth = 100;
-    [SerializeField] private int mapHeight = 100;
     [SerializeField] private float cellSize = 1f;
-    
-    private FogState[,] fogGrid;
     private Vector3 mapOrigin;
+    private int mapWidth, mapHeight;
+    
+    [SerializeField] private int rayCount = 80;
+    private HashSet<Vector2Int> visibleCells = new();
+    private List<VisionSource> activeSources = new();
+    private List<EnemyVisibility> enemiesVisibles = new();
+    private FogState[,] fogGrid;
     
     private void Awake()
     {
@@ -27,16 +33,15 @@ public class FogManager : MonoBehaviour
         InitializeGrid();
     }
     
-    // Inicializar el grid de niebla
+    // Inicializar el grid de niebla en base al tamanio del mapa
     private void InitializeGrid()
     {
-        Renderer renderer = mapTransform.GetComponent<Renderer>();
-        
-        Vector3 mapSize = renderer.bounds.size;
+        Renderer mapRenderer = mapTransform.GetComponent<Renderer>();
+        Vector3 mapSize = mapRenderer.bounds.size;
         
         mapWidth = Mathf.CeilToInt(mapSize.x / cellSize);
         mapHeight = Mathf.CeilToInt(mapSize.z / cellSize);
-        mapOrigin = renderer.bounds.min;
+        mapOrigin = mapRenderer.bounds.min;
         
         fogGrid = new FogState[mapWidth, mapHeight];
 
@@ -48,55 +53,164 @@ public class FogManager : MonoBehaviour
             }
         }
     }
-
-    // Actualizar a niebla parcial si ya se ha explorado
-    public void ResetVisibility()
+    
+    // Registrar una fuente de vision
+    public void RegisterVisionSource(VisionSource source)
     {
-        for (int x = 0; x < mapWidth; x++)
+        activeSources.Add(source);
+    }
+
+    private void LateUpdate()
+    {
+        ResetVisible();
+
+        foreach (var source in activeSources)
         {
-            for (int y = 0; y < mapHeight; y++)
+            RevealArea(source.transform.position, source.GetVisionRange());
+        }
+        
+        UpdateEnemyVisibility();
+        activeSources.Clear();
+    }
+    
+    // Actualiza la visibilidad de los enemigos
+    private void UpdateEnemyVisibility()
+    {
+        foreach (var enemy in enemiesVisibles)
+        {
+            FogState state = GetFogState(enemy.transform.position);
+            bool visible = state == FogState.None;
+            enemy.SetVisibility(visible);
+        }
+    }
+    
+    // Registrar a un enemigo para hacerlo visible
+    public void RegisterEnemy(EnemyVisibility enemy)
+    {
+        if(!enemiesVisibles.Contains(enemy))
+            enemiesVisibles.Add(enemy);
+        Debug.Log("Enemy registered");
+    }
+    
+    // Desregistrar a un enemigo para ocultarlo
+    public void UnregisterEnemy(EnemyVisibility enemy)
+    {
+        enemiesVisibles.Remove(enemy);
+        Debug.Log("Enemy unregistered");
+    }
+
+    // Actualiza a niebla parcial si ya se ha dejado de ver pero se han visto antes
+    public void ResetVisible()
+    {
+        foreach (var cell in visibleCells)
+        {
+            if(fogGrid[cell.x, cell.y] == FogState.None)
+                fogGrid[cell.x, cell.y] = FogState.Partial;
+        }
+        visibleCells.Clear();
+    }
+    
+    // Revela un area de celdas alrededor de la fuente de vision
+    public void RevealArea(Vector3 origin, float radius)
+    {
+        float angleStep = 360f / rayCount;
+
+        for (int i = 0; i < rayCount; i++)
+        {
+            float angle = angleStep * i * Mathf.Deg2Rad;
+
+            Vector3 dir = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
+
+            CastVisionRay(origin, dir, radius);
+        }
+    }
+    
+    // Revela una linea de celdas
+    private void CastVisionRay(Vector3 origin, Vector3 direction, float radius)
+    {
+        Vector3 start = origin + Vector3.up * 1.5f;
+
+        RaycastHit hit;
+        Debug.DrawRay(start, direction * radius, Color.red);
+        if (Physics.Raycast(start, direction, out hit, radius, obstaclesMask))
+        {
+            RevealLine(origin, hit.point);
+        }
+        else
+        {
+            RevealLine(origin, origin + direction * radius);
+        }
+    }
+    
+    // Revela una linea de celdas
+    private void RevealLine(Vector3 start, Vector3 end)
+    {
+        float distance = Vector3.Distance(start, end);
+        int steps = Mathf.CeilToInt(distance/cellSize);
+
+        for (int i = 0; i <= steps; i++)
+        {
+            Vector3 pos = Vector3.Lerp(start, end, i / (float)steps);
+            Vector2Int cell = WorldToGrid(pos);
+
+            if (InsideGrid(cell))
             {
-                if(fogGrid[x, y] == FogState.None)
-                    fogGrid[x, y] = FogState.Partial;
+                fogGrid[cell.x, cell.y] = FogState.None;
+                visibleCells.Add(cell);
             }
         }
     }
     
-    // Revela las celdas que ve el player
-    public void RevealCell(Vector3 worldPos)
+    // Convertir world a celda
+    private Vector2Int WorldToGrid(Vector3 worldPos)
     {
         int x = Mathf.FloorToInt((worldPos.x - mapOrigin.x) / cellSize);
         int y = Mathf.FloorToInt((worldPos.z - mapOrigin.z) / cellSize);
-        
-        if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
-            return;
-        
-        fogGrid[x, y] = FogState.None;
+        return new Vector2Int(x, y);
     }
-
-    // Revela una linea de celdas que ve el player
-    public void RevealLine(Vector3 start, Vector3 end)
+    
+    // Convertir celda a world (centro de celda)
+    private Vector3 GridToWorld(Vector2Int cell)
     {
-        float distance = Vector3.Distance(start, end);
-        
-        int steps = Mathf.CeilToInt(distance / cellSize);
-
-        for (int i = 0; i <= steps; i++)
-        {
-            Vector3 pos = Vector3.Lerp(start, end, (float)i / steps);
-            RevealCell(pos);
-        }
+        float x = mapOrigin.x + cell.x * cellSize + cellSize * 0.5f;
+        float z = mapOrigin.z + cell.y * cellSize + cellSize * 0.5f;
+        return new Vector3(x, 0f, z);
+    }
+    
+    // Verificar si una celda esta dentro del grid
+    private bool InsideGrid(Vector2Int cell)
+    {
+        return cell.x >= 0 && cell.x < mapWidth && cell.y >= 0 && cell.y < mapHeight;
     }
     
     // Devuelve el estado de la niebla de una celda
     public FogState GetFogState(Vector3 worldPos)
     {
-        int x = Mathf.FloorToInt((worldPos.x - mapOrigin.x) / cellSize);
-        int y = Mathf.FloorToInt((worldPos.z - mapOrigin.z) / cellSize);
+       Vector2Int cell = WorldToGrid(worldPos);
 
-        if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
-            return FogState.Total;
+        if(!InsideGrid(cell)) return FogState.Total;
         
-        return fogGrid[x, y];
+        return fogGrid[cell.x, cell.y];
+    }
+    
+    void OnDrawGizmos()
+    {
+        if (fogGrid == null) return;
+
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                if (fogGrid[x, y] == FogState.None)
+                {
+                    Vector3 pos = GridToWorld(new Vector2Int(x, y));
+
+                    pos.y += 2f; // levantar un poco
+
+                    Gizmos.color = new Color(0, 1, 0, 0.5f);
+                    Gizmos.DrawCube(pos, Vector3.one * cellSize);
+                }
+            }
+        }
     }
 }

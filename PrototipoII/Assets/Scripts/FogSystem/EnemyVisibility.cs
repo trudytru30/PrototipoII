@@ -3,17 +3,27 @@ using UnityEngine;
 public class EnemyVisibility : MonoBehaviour
 {
     [SerializeField] private GameObject enemyModel;
-
-    private void Update()
+    
+    private void Awake()
     {
-        FogState state = FogManager.Instance.GetFogState(transform.position);
-        
-        enemyModel.SetActive(state == FogState.None);
+        SetVisibility(false);
     }
     
-    // ===== Getters y Setters =====
+    private void OnEnable()
+    {
+        FogManager.Instance.RegisterEnemy(this);
+        Debug.Log("Enemy is visible");
+    }
+
+    private void OnDisable()
+    {
+        FogManager.Instance.UnregisterEnemy(this);
+        Debug.Log("Enemy is invisible");
+    }
+
     public void SetVisibility(bool visible)
     {
+        if(enemyModel.activeSelf == visible) return;
         enemyModel.SetActive(visible);
     }
 }
