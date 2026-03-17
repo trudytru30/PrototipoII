@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     [SerializeField] private Camera cam;
     [SerializeField] private Movement movement;
     
+    [SerializeField] private PlayerShooter shooter;
+    
     private ActionController actionController;
     private PlayerActions inputs;
     
@@ -95,7 +97,24 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     // Accion de apuntar
     public void OnAim(InputAction.CallbackContext context)
     {
-        if(context.started) Debug.Log("Aim");
-        if(context.canceled) Debug.Log("Aim Cancel");
+        if (shooter == null) return;
+
+        if (context.started)
+        {
+            shooter.StartAim();
+            Debug.Log("Aim");
+        }
+
+        if (context.performed)
+        {
+            shooter.Shoot();
+        }
+
+        if (context.canceled)
+        {
+            shooter.StopAim();
+            Debug.Log("Aim Cancel");
+            
+        }
     }
 }
