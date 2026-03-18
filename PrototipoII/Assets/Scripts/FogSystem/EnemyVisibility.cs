@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyVisibility : MonoBehaviour
@@ -15,7 +14,6 @@ public class EnemyVisibility : MonoBehaviour
         if (FogManager.Instance != null)
         {
             FogManager.Instance.RegisterEnemy(this);
-            Debug.Log("Enemy is visible");
         }
         else
         {
@@ -26,12 +24,11 @@ public class EnemyVisibility : MonoBehaviour
     private void OnDisable()
     {
         FogManager.Instance.UnregisterEnemy(this);
-        Debug.Log("Enemy is invisible");
     }
 
     public void SetVisibility(bool visible)
     {
         if(enemyModel.activeSelf == visible) return;
-        enemyModel.SetActive(visible);
+        Debug.Log("Enemy is invisible");
     }
 }

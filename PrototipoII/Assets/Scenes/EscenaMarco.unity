@@ -572,7 +572,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1633996179}
+      addedObject: {fileID: 1633996182}
   m_SourcePrefab: {fileID: 100100000, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
 --- !u!1 &1633996177 stripped
 GameObject:
@@ -584,7 +584,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7949600256943107470, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
   m_PrefabInstance: {fileID: 1633996176}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1633996179
+--- !u!114 &1633996182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -593,10 +593,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1633996177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865bdfd0f8b14ef41bd44e4b55ce85ba, type: 3}
+  m_Script: {fileID: 11500000, guid: b9413499843ef464eb94fc4f2d7f0c44, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisibility
-  enemyModel: {fileID: 1828704699}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisionSource
+  visionRange: 12
+  visionAngle: 70
+  player: {fileID: 3041894466452919030}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1650551707
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +925,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+--- !u!4 &3041894466452919030 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7930737970645742500, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+  m_PrefabInstance: {fileID: 3041894466452919029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5563196650848109648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -946,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7949600256943107470, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.02
+      value: -8.73
       objectReference: {fileID: 0}
     - target: {fileID: 7949600256943107470, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -984,8 +994,34 @@ PrefabInstance:
     - {fileID: 758911970921175689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5563196650848109650}
   m_SourcePrefab: {fileID: 100100000, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+--- !u!1 &5563196650848109649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+  m_PrefabInstance: {fileID: 5563196650848109648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5563196650848109650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563196650848109649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9413499843ef464eb94fc4f2d7f0c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisionSource
+  visionRange: 12
+  visionAngle: 70
+  player: {fileID: 3041894466452919030}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
