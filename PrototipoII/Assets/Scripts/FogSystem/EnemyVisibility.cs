@@ -1,28 +1,21 @@
-using System;
 using UnityEngine;
 
 public class EnemyVisibility : MonoBehaviour
 {
     [SerializeField] private GameObject enemyModel;
     
+    /*
     private void Awake()
     {
         SetVisibility(false);
     }
-
-    private void Start()
+    */
+    private void OnEnable()
     {
-        if (FogManager.Instance != null)
-        {
-            FogManager.Instance.RegisterEnemy(this);
-            Debug.Log("Enemy is visible");
-        }
-        else
-        {
-            Debug.LogError("FogManager not found");
-        }
+        FogManager.Instance.RegisterEnemy(this);
+        Debug.Log("Enemy is visible");
     }
-    
+
     private void OnDisable()
     {
         FogManager.Instance.UnregisterEnemy(this);
