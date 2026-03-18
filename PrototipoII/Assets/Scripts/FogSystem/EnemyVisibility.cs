@@ -4,11 +4,12 @@ public class EnemyVisibility : MonoBehaviour
 {
     [SerializeField] private GameObject enemyModel;
     
+    /*
     private void Awake()
     {
         SetVisibility(false);
     }
-    
+    */
     private void OnEnable()
     {
         FogManager.Instance.RegisterEnemy(this);
