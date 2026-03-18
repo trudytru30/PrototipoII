@@ -4,7 +4,8 @@ using UnityEngine.Playables;
 public class TimelineController : MonoBehaviour
 {
     [SerializeField] private PlayableDirector director;
-    [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
+    //de momento va a lo burro asi, probablemente se quite por el boton de UI
+    private KeyCode pauseKey = KeyCode.Escape;
 
     public bool IsPaused { get; private set; }
 
