@@ -3,18 +3,21 @@ using UnityEngine;
 public class EnemyVisionSource : MonoBehaviour
 {
     [SerializeField] private float visionRange = 12f;
-    [SerializeField] private float visionAngle = 70f;
+    [SerializeField] private float visionAngle = 60f;
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask obstacleMask;
     
     private bool playerSpotted;
+    private bool lastState;
 
     private void Update()
     {
         playerSpotted = false;
         if(!player) return;
         
-        Vector3 direction = player.position - transform.position;
+        Vector3 origin = transform.position + Vector3.up * 1.5f;
+        
+        Vector3 direction = player.position - origin;
         float distance = direction.magnitude;
         
         // Comprobar distancia
@@ -29,13 +32,18 @@ public class EnemyVisionSource : MonoBehaviour
             if (!Physics.Raycast(transform.position, direction, distance, obstacleMask))
             {
                 playerSpotted = true;
-                Debug.DrawRay(transform.position, direction * distance, Color.red);
-                Debug.Log("Player spotted");
+                Debug.DrawRay(transform.position, direction * distance, Color.green);
             } else
             {
-                Debug.DrawRay(transform.position, direction * distance, Color.green);
+                Debug.DrawRay(transform.position, direction * distance, Color.red);
             }
         }
+
+        if (playerSpotted && !lastState)
+        {
+            Debug.Log("Player spotted");
+        }
+        lastState = playerSpotted;
     }
     
     private void OnDrawGizmosSelected()
@@ -63,5 +71,15 @@ public class EnemyVisionSource : MonoBehaviour
 
             prevPoint = point;
         }
+    }
+    
+    public bool GetPlayerSpotted()
+    {
+        return playerSpotted;
+    }
+    
+    public Transform GetPlayerTransform()
+    {
+        return player;
     }
 }
