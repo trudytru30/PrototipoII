@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.VFX;
 using Random = UnityEngine.Random;
 
 public class VFXManager : MonoBehaviour
 {
     public static VFXManager Instance { get; private set; }
 
+    [Header("VFX Library")] 
+    [SerializeField] public VFXEntry[] vfxEntries;
+    
     [Header("Decal Management")]
     public List<GameObject> bloodDecalPrefabs;
     public List<GameObject> bulletHoleDecalPrefabs;
@@ -47,6 +51,29 @@ public class VFXManager : MonoBehaviour
         CleanupOldDecals();
     }
 
+    // PARA PONER UN VFX, SE LLAMA A LA INSTANCE DE VFXMANAGER Y SE HACE EL PLAYVFX, INDICANDO SIEMPRE
+    // EL VFX ID (EL NOMBRE DEL VFXASSET DADO EN LA LIBRERÍA QUE SE QUIERE USAR)
+    
+    // Play VFX 
+    public void PlayVFX(string vfxID, Vector3 position)
+    {
+        VFXEntry entry = System.Array.Find(vfxEntries, e => e.id == vfxID);
+
+        GameObject go = new GameObject();
+        go.transform.position = position;
+        go.transform.rotation = Quaternion.LookRotation(position);
+
+        VisualEffect ve = go.AddComponent<VisualEffect>();
+        ve.visualEffectAsset = entry.library.vfxAssets[Random.Range(0, entry.library.vfxAssets.Length)];
+        ve.Play();
+
+        Destroy(go, 2f);
+    }
+    
+    // PARA PONER UN DECAL, SE LLAMA A LA INSTANCE DE VFXMANAGER Y SE HACE EL SPAWNDECAL, INDICANDO SIEMPRE
+    // EL DECALTYPE (EL NOMBRE DEL DECAL DADO EN LA LISTA QUE SE QUIERE USAR)
+    // Y LOS DATOS DEL TRANSFORM (POSICION Y NORMAL)
+    
     // Main decal spawning method with prevention logic
     public void SpawnDecal(string decalType, Vector3 position, Vector3 normal, Transform parent = null)
     {
@@ -89,7 +116,7 @@ public class VFXManager : MonoBehaviour
         // decal.transform.localScale = scale;
         decal.transform.parent = parent;
         
-        PlaySFX(decalType, position);
+        PlayDecalSFX(decalType, position);
 
         // Random rotation variation
         float randomAngle = Random.Range(0f, 360f);
@@ -157,10 +184,9 @@ public class VFXManager : MonoBehaviour
         }
     }
 
-    private void PlaySFX(string decalID, Vector3 position)
+    //If the decal has an sfx associated
+    private void PlayDecalSFX(string decalID, Vector3 position)
     {
-        //Por ahora solo hay sfx de sangre.
-        
         if (decalID != "Blood") return;
         
         AudioManager.Instance.PlayAtPoint("blood", position);

@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    // PARA PONER UN SONIDO, SE LLAMA A LA INSTANCE DE AUDIOMANAGER Y SE HACE UNO DE SUS PLAYS, INDICANDO SIEMPRE
+    // EL SOUND ID (EL NOMBRE DEL SONIDO DADO EN LA LIBRERÍA QUE SE QUIERE USAR)
     public void Play(string soundID)
     {
         AudioEntry entry = System.Array.Find(_audioEntries, e => e.id == soundID);
@@ -176,43 +178,6 @@ public class AudioManagerEditor : Editor
     private void OnEnable()
     {
         _audioEntriesProp = serializedObject.FindProperty("_audioEntries");
-    }
-
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
-
-        EditorGUILayout.PropertyField(_audioEntriesProp, true);
-
-        if (GUILayout.Button("Añadir Nuevo Tipo"))
-        {
-            AddNewEntry();
-        }
-
-        serializedObject.ApplyModifiedProperties();
-    }
-
-    private void AddNewEntry()
-    {
-        Undo.RecordObject(target, "Añadir entrada de audio");
-    
-        int newIndex = _audioEntriesProp.arraySize;
-        _audioEntriesProp.InsertArrayElementAtIndex(newIndex);
-    
-        SerializedProperty newEntry = _audioEntriesProp.GetArrayElementAtIndex(newIndex);
-        
-        SerializedProperty typeProp = newEntry.FindPropertyRelative("typeConfig");
-        SerializedProperty idProp = typeProp.FindPropertyRelative("id");
-    
-        if (string.IsNullOrEmpty(idProp.stringValue))
-        {
-            idProp.stringValue = $"nuevo_id_{newIndex}";
-        }
-        
-        newEntry.FindPropertyRelative("_source").objectReferenceValue = null;
-        newEntry.FindPropertyRelative("_library").objectReferenceValue = null;
-    
-        EditorUtility.SetDirty(target);
     }
 }
 #endif
