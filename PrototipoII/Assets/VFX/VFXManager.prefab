@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4263954626801911188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4443303150533831698}
+  - component: {fileID: 2585930491054532121}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4443303150533831698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263954626801911188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.63749, y: 1.61699, z: -7.91786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2585930491054532121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263954626801911188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf9e146d9aceb34fb09366b4d851ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXManager
+  bloodDecalPrefabs:
+  - {fileID: 7734111409527735924, guid: 3f3c4d980833fc4459e08bafbb385356, type: 3}
+  - {fileID: 7734111409527735924, guid: b46d087310591364598fed566987db6a, type: 3}
+  - {fileID: 7734111409527735924, guid: e08d91555fd103b40b7b32689cfb3e4f, type: 3}
+  bulletHoleDecalPrefabs:
+  - {fileID: 4090132311717699999, guid: ba3cbb430a8824f4eb75b9e216ce4c3e, type: 3}
+  scratchDecalPrefabs: []
+  maxDecalsInScene: 500
+  decalLifetime: 21
+  noDecalLayers:
+    serializedVersion: 2
+    m_Bits: 128
