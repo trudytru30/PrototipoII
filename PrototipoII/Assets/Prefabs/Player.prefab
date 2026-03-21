@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 8494432511737256393}
   - component: {fileID: 3707397443351696067}
   - component: {fileID: 8931211348799667706}
+  - component: {fileID: 1450124672025767027}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -331,16 +332,10 @@ MonoBehaviour:
   cam: {fileID: 0}
   weaponArm: {fileID: 3852273600633078788}
   actionController: {fileID: 4541904263582997895}
+  weaponRaycast: {fileID: 1450124672025767027}
   rotationSpeed: 720
-  aimMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  damage: 100
-  range: 100
+  aimPlaneHeight: 0
   fireDuration: 0.1
-  shootMask:
-    serializedVersion: 2
-    m_Bits: 119
 --- !u!114 &3707397443351696067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +371,25 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1450124672025767027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768667454981247352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de53cddde89b07944a39f3cc35c78315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponRaycast
+  damage: 50
+  range: 100
+  shootMask:
+    serializedVersion: 2
+    m_Bits: 119
+  useSpread: 0
+  spreadAngle: 0
 --- !u!1 &8274713380110832583
 GameObject:
   m_ObjectHideFlags: 0
