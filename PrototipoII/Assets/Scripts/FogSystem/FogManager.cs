@@ -7,6 +7,7 @@ public class FogManager : MonoBehaviour
     private static readonly int origin = Shader.PropertyToID("_MapOrigin");
     private static readonly int size = Shader.PropertyToID("_MapSize");
     private static readonly int texture = Shader.PropertyToID("_FogTexture");
+    private static readonly int fogTextureSize = Shader.PropertyToID("_FogTextureSize");
 
     [Header("Map Settings")]
     [SerializeField] private LayerMask obstaclesMask;
@@ -51,7 +52,8 @@ public class FogManager : MonoBehaviour
         fogGrid = new FogState[mapWidth, mapHeight];
         fogTexture = new Texture2D(mapWidth, mapHeight);
         fogTexture.filterMode = FilterMode.Point;
-            
+        fogTexture.wrapMode = TextureWrapMode.Clamp;
+        
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
@@ -60,7 +62,8 @@ public class FogManager : MonoBehaviour
             }
         }
         Shader.SetGlobalVector(origin, new Vector2(mapOrigin.x, mapOrigin.z));
-        Shader.SetGlobalVector(size, new Vector2(mapRenderer.bounds.size.x, mapRenderer.bounds.size.z));
+        Shader.SetGlobalVector(size, new Vector2(mapWidth * cellSize, mapHeight * cellSize));
+        Shader.SetGlobalVector(fogTextureSize, new Vector2(mapWidth, mapHeight));
     }
     
     // Manejar textura de la niebla
