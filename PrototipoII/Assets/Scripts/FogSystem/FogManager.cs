@@ -4,13 +4,18 @@ using System.Collections.Generic;
 public class FogManager : MonoBehaviour
 {
     public static FogManager Instance;
+    private static readonly int origin = Shader.PropertyToID("_MapOrigin");
+    private static readonly int size = Shader.PropertyToID("_MapSize");
+    private static readonly int texture = Shader.PropertyToID("_FogTexture");
 
     [Header("Map Settings")]
     [SerializeField] private LayerMask obstaclesMask;
     [SerializeField] private Transform mapTransform;
     [SerializeField] private float cellSize = 1f;
+    [SerializeField] private Material fogMaterial;
     private Vector3 mapOrigin;
     private int mapWidth, mapHeight;
+    private Texture2D fogTexture;
     
     [SerializeField] private int rayCount = 80;
     private HashSet<Vector2Int> visibleCells = new();
@@ -41,10 +46,12 @@ public class FogManager : MonoBehaviour
         
         mapWidth = Mathf.CeilToInt(mapSize.x / cellSize);
         mapHeight = Mathf.CeilToInt(mapSize.z / cellSize);
-        mapOrigin = mapRenderer.bounds.min;
+        mapOrigin = mapTransform.position - mapRenderer.bounds.extents;
         
         fogGrid = new FogState[mapWidth, mapHeight];
-
+        fogTexture = new Texture2D(mapWidth, mapHeight);
+        fogTexture.filterMode = FilterMode.Point;
+            
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
@@ -52,6 +59,34 @@ public class FogManager : MonoBehaviour
                 fogGrid[x, y] = FogState.Total;
             }
         }
+        Shader.SetGlobalVector(origin, new Vector2(mapOrigin.x, mapOrigin.z));
+        Shader.SetGlobalVector(size, new Vector2(mapRenderer.bounds.size.x, mapRenderer.bounds.size.z));
+    }
+    
+    // Manejar textura de la niebla
+    private void UpdateFogTexture()
+    {
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                Color color = new Color(0, 0, 0, 1f);   // Inicializar en negro
+                switch (fogGrid[x, y])
+                {
+                    case FogState.None:
+                        color = new Color(0, 0, 0, 0f); // Transparente
+                        break;
+                    case FogState.Partial:
+                        color = new Color(0, 0, 0, 0.4f);   // Gris
+                        break;
+                    case FogState.Total:
+                        color = new Color(0, 0, 0, 1f); // Negro
+                        break;
+                }
+                fogTexture.SetPixel(x, y, color);
+            }
+        }
+        fogTexture.Apply();
     }
     
     // Registrar una fuente de vision
@@ -71,6 +106,8 @@ public class FogManager : MonoBehaviour
         
         UpdateEnemyVisibility();
         activeSources.Clear();
+        UpdateFogTexture();
+        fogMaterial.SetTexture(texture, fogTexture);
     }
     
     // Actualiza la visibilidad de los enemigos
@@ -152,7 +189,7 @@ public class FogManager : MonoBehaviour
         {
             Vector3 pos = Vector3.Lerp(start, end, i / (float)steps);
             Vector2Int cell = WorldToGrid(pos);
-
+            
             if (InsideGrid(cell))
             {
                 fogGrid[cell.x, cell.y] = FogState.None;

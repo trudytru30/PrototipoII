@@ -1,6 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+/*
+ * Logica de apuntado y disparo del PLAYER
+ *
+ * NO TOCAR currentAimPoint directamente desde otro script
+ * En Inspector:
+ * AimPlaneHeight: 0
+ *      altura del plano de apuntado, por defecto a la altura del player
+ *      ,se puede ajustar para apuntar a diferentes alturas
+ * ShootMask(todas menos player)
+ * Use Spread :false
+ * SpreadAngle: 0
+ */
 public class PlayerShooter : MonoBehaviour
 {
     //De momwnto prueba inicial con raycast, luego se implementará con proyectiles,etc..
@@ -8,26 +20,25 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Transform weaponArm;
     [SerializeField] private ActionController actionController;
+    [SerializeField] private WeaponRaycast weaponRaycast;
     
+    [Header("Aim")]
     [SerializeField] private float rotationSpeed = 720f;
-    [SerializeField] private LayerMask aimMask = ~0;//Capa para el raycast, por defecto TODO:capa específica para el raycast
+    [SerializeField] private float aimPlaneHeight = ~0;//Capa para el raycast, por defecto TODO:capa específica para el raycast
     
-    [Header("Disparo")]
-    [SerializeField] private float damage = 50f;
-    [SerializeField] private float range = 100f;
+    [Header("Visual")]
     [SerializeField] private float fireDuration = 0.1f;
-    [SerializeField] private LayerMask shootMask = ~0;//(..)
     
-    private Vector3 currentAimPoint;
+    private Vector3 currentAimPoint;//punto de mira actual(raton)
     private Coroutine shootingCoroutine;//controla el tiempo de disparo
     private bool isAiming;
     
     
     private void Update()
     {
-        UpdateAimPoint();//actualiza el punto de mira cada frame
-
-        if (isAiming)
+        UpdateAimPoint();
+        if (isAiming && actionController.GetLowerBodyState() == LowerBodyState.Idle)
+        //if (isAiming) //lo ideal pero el player se mueve solo en idle
         {
             RotateTowardsAimPoint();
         }
@@ -38,14 +49,12 @@ public class PlayerShooter : MonoBehaviour
         if (cam == null) return;
 
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());//crea un rayo desde la camara hacia el punto del mouse
+        //plano horizontal a la altura del player
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0f, aimPlaneHeight, 0f));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 500f, aimMask))
+        if (groundPlane.Raycast(ray, out float enter))
         {
-            currentAimPoint = hit.point;//si el raycast golpea algo, el punto de mira se actualiza al punto de impacto
-        }
-        else
-        {
-            currentAimPoint = ray.origin + ray.direction * 50f;//
+            currentAimPoint = ray.GetPoint(enter);
         }
     }
     
@@ -65,13 +74,12 @@ public class PlayerShooter : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    //Apuntado
+    //Apunta (tren superior libre)
     public void StartAim()
     {
         if (actionController == null) return;
 
-        if (!actionController.CanUseUpperBody())
-            return;
+        if (!actionController.CanUseUpperBody()) return;
 
         isAiming = true;
         actionController.SetUpperBodyState(UpperBodyState.Aiming);
@@ -93,16 +101,17 @@ public class PlayerShooter : MonoBehaviour
     // Disparo
     public void Shoot()
     {
-        if (actionController == null) return;
+        if (actionController == null || weaponRaycast == null) return;
 
         //solo si usa el cuerpo superior o si ya esta apuntando, puede disparar
         bool canShoot = actionController.CanUseUpperBody() || actionController.GetUpperBodyState() == UpperBodyState.Aiming;
 
-        if (!canShoot)
-            return;
+        if (!canShoot) return;
 
         if (shootingCoroutine != null)
+        {
             StopCoroutine(shootingCoroutine);
+        }
 
         shootingCoroutine = StartCoroutine(ShootRoutine());//inicia la rutina de disparo
     }
@@ -112,33 +121,28 @@ public class PlayerShooter : MonoBehaviour
         isAiming = false;
         actionController.SetUpperBodyState(UpperBodyState.Shooting);
 
-        //weaponarm o si no centro del personaje + altura
-        Vector3 origin = weaponArm != null ? weaponArm.position : transform.position + Vector3.up * 1.2f;
+        Transform muzzle = weaponArm != null ? weaponArm : transform;
 
-        Vector3 direction = (currentAimPoint - origin).normalized;
+        ShootResult result = weaponRaycast.Fire(muzzle, currentAimPoint, transform.root);
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, range, shootMask))
-        {
-            Debug.DrawLine(origin, hit.point, Color.red, 1f);//raycast 
+        Debug.DrawLine(
+            muzzle.position,
+            result.finalPoint,
+            result.hit ? Color.red : Color.yellow,
+            1f
+        );
+        //TODO: efectos visuales
+        //-sonido de disparo
+        //usar hit,hitInfoy finalPoint para efectos de impacto (struct deShootResult)
+       
 
-            Health health = hit.collider.GetComponentInParent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-            //TODO:todo lo visual , particulas, sonido,etc
-            
-        }
-        else
-        {
-            Debug.DrawRay(origin, direction * range, Color.red, 1f);
-        }
+        yield return new WaitForSeconds(fireDuration);
 
-        yield return new WaitForSeconds(fireDuration);//espera el tiempo de disparo
-
-        actionController.SetUpperBodyState(UpperBodyState.None);//vuelve al estado normal del cuerpo superior
+        actionController.SetUpperBodyState(UpperBodyState.None);
         shootingCoroutine = null;
+            
     }
+    
 
     public Vector3 GetAimPoint()
     {
