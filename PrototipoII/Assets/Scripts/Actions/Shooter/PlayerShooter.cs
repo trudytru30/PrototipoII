@@ -26,7 +26,8 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float rotationSpeed = 720f;
     [SerializeField] private float aimPlaneHeight = ~0;//Capa para el raycast, por defecto TODO:capa específica para el raycast
     
-    [Header("Visual")]
+    [Header("FX")]
+    [SerializeField] private string sfxID;
     [SerializeField] private float fireDuration = 0.1f;
     
     private Vector3 currentAimPoint;//punto de mira actual(raton)
@@ -134,6 +135,25 @@ public class PlayerShooter : MonoBehaviour
         //TODO: efectos visuales
         //-sonido de disparo
         //usar hit,hitInfoy finalPoint para efectos de impacto (struct deShootResult)
+        
+        AudioManager.Instance.PlayAtPoint(sfxID, muzzle.position);
+        
+        //Estructura provisional para que se escuche "bien"
+
+        if (result.hit)
+        {
+            Debug.Log(result.hitInfo.collider.gameObject.name);
+            if (result.hitInfo.collider.name == "EnemyModel") //Mira si el gameobject tiene el EnemyModel
+            {
+                AudioManager.Instance.Play("hitBlood");
+            }
+            else
+            {
+                AudioManager.Instance.Play("hitWall");
+            }
+        }
+        
+
        
 
         yield return new WaitForSeconds(fireDuration);

@@ -98,7 +98,6 @@ public class Movement : MonoBehaviour
     private void PlaySteppingSounds()
     {
         _tempStepSoundTimer -= Time.deltaTime;
-        Debug.Log(_tempStepSoundTimer);
         if (_tempStepSoundTimer <= 0)
         {
             Debug.Log("Stepping sound");

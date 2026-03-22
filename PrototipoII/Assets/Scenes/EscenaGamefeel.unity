@@ -1195,6 +1195,34 @@ PrefabInstance:
       propertyPath: _audioEntries.Array.data[3]._source
       value: 
       objectReference: {fileID: 1845901197}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: _audioEntries.Array.data[3]._library.clips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: '_audioEntries.Array.data[3]._library.clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b935d0b0395a14c469991347d3843e68, type: 3}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: '_audioEntries.Array.data[3]._library.clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cdc95e02de228a146810d19d060a7131, type: 3}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: '_audioEntries.Array.data[3]._library.clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 100fb735287d7bc4e9e62c1c911c7ac0, type: 3}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: '_audioEntries.Array.data[3]._library.clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3771edf7463b32e45a2e19729882c6c6, type: 3}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: '_audioEntries.Array.data[3]._library.clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: fa9b40fd6d86d6041b11c15d62f12cad, type: 3}
+    - target: {fileID: 5667114337933147683, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
+      propertyPath: '_audioEntries.Array.data[3]._library.clips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 10354824de1a11c4da1abede6a918ce4, type: 3}
     - target: {fileID: 6209750015601471390, guid: 91727585549fdf342b37c4fb9390b3c6, type: 3}
       propertyPath: m_Name
       value: AudioManager
