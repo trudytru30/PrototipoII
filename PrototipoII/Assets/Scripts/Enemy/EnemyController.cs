@@ -1,7 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+/*
+ * TODO: Meterle el weaponarm(crearlo)
+ * 
+ * Pasarle el weaponshooter
+ * aim at chest :true
+ * chest height:1.2f
+ *
+ * en WeaponRaycast:
+ *  Use spread (true)?
+ *  spread angle:
+ *  Shoot mask: todas menos enemy
+ */
 public class EnemyController : MonoBehaviour
 {
     [Header("Patrol Settings")]
@@ -13,6 +24,9 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private EnemyVisionSource vision;
 
+    [Header("Disparo")]
+    [SerializeField] private EnemyShooter shooter;
+    
     private NavMeshAgent agent;
     private EnemyState currentState;
 
@@ -123,9 +137,20 @@ public class EnemyController : MonoBehaviour
 
         if (!vision || !vision.GetPlayerSpotted()) return;
         
-        RotateEnemy(vision.GetPlayerTransform().position);  // Rotar hacia el player para dispararle
+        Transform player = vision.GetPlayerTransform();
+        //cambiado , no pillaba el player
+        RotateEnemy(player.position);  // Rotar hacia el player para dispararle
 
         // TODO: Disparar al player
+        if (shooter != null)
+        {
+            shooter.SetTarget(player);
+
+            if (shooter.CanShoot())
+            {
+                shooter.TryShoot();
+            }
+        }
     }
 
     private bool IsFacingtarget(Vector3 target, float maxAngle = 40f)

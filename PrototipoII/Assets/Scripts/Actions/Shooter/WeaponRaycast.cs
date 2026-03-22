@@ -16,7 +16,7 @@ public class WeaponRaycast : MonoBehaviour
     [SerializeField] private LayerMask shootMask = ~0;
 
     [Header("Dispersión")]
-    [SerializeField] private bool useSpread = true;
+    [SerializeField] private bool useSpread = true;//player false
     [SerializeField] private float spreadAngle = 2f;
     
     public ShootResult Fire(Transform muzzle, Vector3 targetPoint, Transform ownerRoot)

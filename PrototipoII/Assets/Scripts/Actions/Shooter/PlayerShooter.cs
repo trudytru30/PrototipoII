@@ -5,6 +5,13 @@ using System.Collections;
  * Logica de apuntado y disparo del PLAYER
  *
  * NO TOCAR currentAimPoint directamente desde otro script
+ * En Inspector:
+ * AimPlaneHeight: 0
+ *      altura del plano de apuntado, por defecto a la altura del player
+ *      ,se puede ajustar para apuntar a diferentes alturas
+ * ShootMask(todas menos player)
+ * Use Spread :false
+ * SpreadAngle: 0
  */
 public class PlayerShooter : MonoBehaviour
 {
