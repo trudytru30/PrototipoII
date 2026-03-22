@@ -44,6 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf9e146d9aceb34fb09366b4d851ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VFXManager
+  vfxEntries:
+  - typeConfig:
+      id: blood
+      debugColor: {r: 0, g: 0, b: 0, a: 0}
+    _vfx: {fileID: 0}
+    _library:
+      vfxAssets:
+      - {fileID: 0}
+      vfxPrefab:
+      - {fileID: 2775933049285484052, guid: 1d381b4e8c5039c4d88189087770fc1b, type: 3}
   bloodDecalPrefabs:
   - {fileID: 7734111409527735924, guid: 3f3c4d980833fc4459e08bafbb385356, type: 3}
   - {fileID: 7734111409527735924, guid: b46d087310591364598fed566987db6a, type: 3}

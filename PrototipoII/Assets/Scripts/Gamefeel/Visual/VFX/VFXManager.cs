@@ -55,7 +55,7 @@ public class VFXManager : MonoBehaviour
     // EL VFX ID (EL NOMBRE DEL VFXASSET DADO EN LA LIBRERÍA QUE SE QUIERE USAR)
     
     // Play VFX 
-    public void PlayVFX(string vfxID, Vector3 position)
+    public void PlayVFXAsset(string vfxID, Vector3 position)
     {
         VFXEntry entry = System.Array.Find(vfxEntries, e => e.id == vfxID);
 
@@ -66,6 +66,17 @@ public class VFXManager : MonoBehaviour
         VisualEffect ve = go.AddComponent<VisualEffect>();
         ve.visualEffectAsset = entry.library.vfxAssets[Random.Range(0, entry.library.vfxAssets.Length)];
         ve.Play();
+
+        Destroy(go, 2f);
+    }
+    
+    public void PlayVFXPrefab(string vfxID, Vector3 position, Vector3 direction, Quaternion rotation)
+    {
+        VFXEntry entry = System.Array.Find(vfxEntries, e => e.id == vfxID);
+        
+        GameObject go = Instantiate(entry.library.vfxPrefab[Random.Range(0, entry.library.vfxPrefab.Length)], position, rotation);
+        
+        go.GetComponent<ParticleSystem>().Play();
 
         Destroy(go, 2f);
     }

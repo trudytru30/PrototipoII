@@ -5,6 +5,7 @@ using UnityEngine.VFX;
 public class VFXLibrary
 {
     public VisualEffectAsset[] vfxAssets;
+    public GameObject[] vfxPrefab;
 }
 
 [System.Serializable]
@@ -24,4 +25,6 @@ public class VFXEntry
     public string id => typeConfig != null ? typeConfig.id : "NULL_ID"; 
     public VisualEffect source => _vfx;
     public VFXLibrary library => _library;
+    
+    
 }

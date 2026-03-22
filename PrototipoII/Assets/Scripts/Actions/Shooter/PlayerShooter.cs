@@ -145,7 +145,15 @@ public class PlayerShooter : MonoBehaviour
             Debug.Log(result.hitInfo.collider.gameObject.name);
             if (result.hitInfo.collider.name == "EnemyModel") //Mira si el gameobject tiene el EnemyModel
             {
+                //audio
                 AudioManager.Instance.Play("hitBlood");
+                
+                //Vfx
+                var direction = this.transform.position - result.hitInfo.point;
+            
+                var rotation = Quaternion.LookRotation(-direction, Vector3.up);
+                
+                VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
             }
             else
             {
