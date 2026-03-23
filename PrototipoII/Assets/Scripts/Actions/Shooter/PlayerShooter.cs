@@ -135,8 +135,8 @@ public class PlayerShooter : MonoBehaviour
         //TODO: efectos visuales
         //-sonido de disparo
         //usar hit,hitInfoy finalPoint para efectos de impacto (struct deShootResult)
-        
-        AudioManager.Instance.PlayAtPoint(sfxID, muzzle.position);
+        if (AudioManager.Instance)
+            AudioManager.Instance.PlayAtPoint(sfxID, muzzle.position);
         
         //Estructura provisional para que se escuche "bien"
 
@@ -146,21 +146,36 @@ public class PlayerShooter : MonoBehaviour
             if (result.hitInfo.collider.name == "EnemyModel") //Mira si el gameobject tiene el EnemyModel
             {
                 //audio
-                AudioManager.Instance.Play("hitBlood");
+                if (AudioManager.Instance)
+                    AudioManager.Instance.Play("hitBlood");
                 
                 //Vfx
                 var direction = this.transform.position - result.hitInfo.point;
             
                 var rotation = Quaternion.LookRotation(-direction, Vector3.up);
                 
-                VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
+                if (VFXManager.Instance)
+                    VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
             }
             else
             {
-                AudioManager.Instance.Play("hitWall");
+                if (AudioManager.Instance)
+                    AudioManager.Instance.Play("hitWall");
             }
         }
+
+        //cfx
         
+        var directionCfx = this.transform.position - result.finalPoint;
+
+        Debug.Log(directionCfx);
+        
+        if (CFXManager.Instance)
+        {
+            CFXManager.GenerateImpulse(new Vector3(0 * directionCfx.normalized.x,
+                4 * directionCfx.normalized.y, 
+                -4 * directionCfx.normalized.z));
+        }
 
        
 

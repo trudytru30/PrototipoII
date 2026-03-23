@@ -207,12 +207,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41490414}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -38.7, y: 24.05, z: -15.12}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 23.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1845901211}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &41490418
 MonoBehaviour:
@@ -776,8 +776,10 @@ GameObject:
   - component: {fileID: 1102087073}
   - component: {fileID: 1102087075}
   - component: {fileID: 1102087072}
+  - component: {fileID: 1102087078}
   - component: {fileID: 1102087076}
   - component: {fileID: 1102087077}
+  - component: {fileID: 1102087079}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -853,11 +855,11 @@ Transform:
   m_GameObject: {fileID: 1102087071}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -38.7, y: 24.05, z: -15.12}
+  m_LocalPosition: {x: 0, y: 23.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1845901211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1102087075
 MonoBehaviour:
@@ -873,7 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 3, y: 0, z: 3}
+    PositionDamping: {x: 3, y: 1, z: 3}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -919,6 +921,71 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &1102087078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102087071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5d8aa948513564cba404624cb56b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraManager
+--- !u!114 &1102087079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102087071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 1
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 1, y: -1, z: -1}
 --- !u!1001 &1633996176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1520,7 +1587,13 @@ PrefabInstance:
       objectReference: {fileID: 41490416}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7930737970645742500, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 41490417}
+    - targetCorrespondingSourceObject: {fileID: 7930737970645742500, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1102087074}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1768667454981247352, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
       insertIndex: -1
@@ -1598,8 +1671,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 41490417}
-  - {fileID: 1102087074}
   - {fileID: 3041894466452919029}
   - {fileID: 5563196650848109648}
   - {fileID: 1633996176}
