@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
+using URPGlitch;
 using Random = UnityEngine.Random;
 
 public class VFXManager : MonoBehaviour
@@ -18,10 +21,21 @@ public class VFXManager : MonoBehaviour
     public List<GameObject> scratchDecalPrefabs;
     public int maxDecalsInScene = 75;
     public float decalLifetime = 10f;
-
-    [Header("Decal Prevention")]
-    public LayerMask noDecalLayers; // Set this in inspector to include "Bouncer" layer
-
+    public LayerMask noDecalLayers;
+    
+    [Header("PostProcessingFX")]
+    [SerializeField] Volume globalVolume;
+    [SerializeField] AnalogGlitchVolume analogGlitch;
+    [SerializeField] DigitalGlitchVolume digitalGlitch;
+    
+    [Header("Glitch")] 
+    private float defaultScanLineJitter;
+    private float defaultVerticalJump;
+    private float defaultHorizontalShake;
+    private float defaultColorDrift;
+    private float defaultIntensityOfDigital;
+    
+    
     private  Queue<GameObject> _activeDecals = new Queue<GameObject>();
     private  Dictionary<string, List<GameObject>> _decalPools = new Dictionary<string, List<GameObject>>();
 
@@ -32,11 +46,29 @@ public class VFXManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
         
         InitializeDecalPools();
+    }
+
+    private void Start()
+    {
+        if (globalVolume.profile.TryGet(out DigitalGlitchVolume dgFX))
+        {
+            digitalGlitch = dgFX;
+            defaultIntensityOfDigital = digitalGlitch.intensity.value;
+        }
+
+        if (globalVolume.profile.TryGet(out AnalogGlitchVolume aFX))
+        {
+            analogGlitch = aFX;
+            defaultScanLineJitter = analogGlitch.scanLineJitter.value;
+            defaultVerticalJump = analogGlitch.verticalJump.value;
+            defaultHorizontalShake = analogGlitch.horizontalShake.value;
+            defaultColorDrift = analogGlitch.colorDrift.value;
+        }
     }
 
     void InitializeDecalPools()
@@ -240,6 +272,39 @@ public class VFXManager : MonoBehaviour
         {
             RemoveOldestDecal();
         }
+    }
+    
+    //Post Processing
+
+    public void CallGlitchFX(float scanLineJitter, float verticalJump, float horizontalShake, float colorDrift,
+        float intensityOfDigital, bool isTemporary, float timeToReturn= 0.4f)
+    {
+        Debug.Log(digitalGlitch.intensity);
+        
+        digitalGlitch.intensity.Override(intensityOfDigital);
+        analogGlitch.colorDrift.Override(colorDrift);
+        analogGlitch.scanLineJitter.Override(scanLineJitter);
+        analogGlitch.verticalJump.Override(verticalJump);
+        analogGlitch.horizontalShake.Override(horizontalShake);
+
+        Debug.Log(digitalGlitch.intensity);
+        if (isTemporary)
+        {
+            StartCoroutine(TempGlitchFX(timeToReturn));
+        }
+    }
+
+    private IEnumerator TempGlitchFX(float timeToReturn)
+    {
+        //Se intentará hacer que progresivamente cambie de uno a otro más adelante.
+        
+        yield return new WaitForSeconds(timeToReturn);
+        
+        digitalGlitch.intensity.Override(defaultIntensityOfDigital);
+        analogGlitch.colorDrift.Override(defaultColorDrift);
+        analogGlitch.scanLineJitter.Override(defaultScanLineJitter);
+        analogGlitch.verticalJump.Override(defaultVerticalJump);
+        analogGlitch.horizontalShake.Override(defaultHorizontalShake);
     }
     
 }
