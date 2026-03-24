@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.Rendering;
+
 /*
  * Logica de apuntado y disparo del PLAYER
  *
@@ -140,6 +142,16 @@ public class PlayerShooter : MonoBehaviour
         
         //Estructura provisional para que se escuche "bien"
 
+        if (VFXManager.Instance)
+            VFXManager.Instance.CallGlitchFX(
+              0.4f,
+               0.1f,
+            0.4f,
+                 0.4f,
+            0.2f,
+               true);
+        
+        
         if (result.hit)
         {
             Debug.Log(result.hitInfo.collider.gameObject.name);
@@ -172,9 +184,9 @@ public class PlayerShooter : MonoBehaviour
         
         if (CFXManager.Instance)
         {
-            CFXManager.GenerateImpulse(new Vector3(0 * directionCfx.normalized.x,
-                4 * directionCfx.normalized.y, 
-                -4 * directionCfx.normalized.z));
+            CFXManager.GenerateImpulse(new Vector3(-2 * directionCfx.normalized.x,
+                -2 * directionCfx.normalized.z, 
+                1));
         }
 
        
