@@ -11,11 +11,14 @@ public class Movement : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Queue<Vector3> destinationQueue = new Queue<Vector3>();
     
+    [SerializeField] private float stepSoundTimer = 0.6f;
+    private float _tempStepSoundTimer;
+    
+    
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
-
     
     private void Update()
     {
@@ -24,6 +27,11 @@ public class Movement : MonoBehaviour
         {
             Vector3 nextDestination = destinationQueue.Dequeue();
             navMeshAgent.SetDestination(nextDestination);
+        }
+        
+        if (navMeshAgent.velocity.sqrMagnitude > 0f)
+        {
+            PlaySteppingSounds();
         }
     }
 
@@ -85,5 +93,16 @@ public class Movement : MonoBehaviour
     public bool IsStopped()
     {
         return navMeshAgent.isStopped;
+    }
+    
+    private void PlaySteppingSounds()
+    {
+        _tempStepSoundTimer -= Time.deltaTime;
+        if (_tempStepSoundTimer <= 0)
+        {
+            Debug.Log("Stepping sound");
+            AudioManager.Instance.Play("steps");
+            _tempStepSoundTimer = stepSoundTimer;
+        }
     }
 }

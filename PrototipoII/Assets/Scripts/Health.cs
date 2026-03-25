@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Health : MonoBehaviour
 {
@@ -20,8 +21,20 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        
+        //FX
+        if (VFXManager.Instance)
+            VFXManager.Instance.CallGlitchFX(
+            0.9f,
+            0.9f,
+        0.9f,
+             0.9f,
+        0.9f,
+            true);
     }
 
+    
+    
     private void Die()
     {
         Destroy(gameObject);
