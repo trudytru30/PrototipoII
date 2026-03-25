@@ -128,12 +128,14 @@ public class PlayerShooter : MonoBehaviour
 
         ShootResult result = weaponRaycast.Fire(muzzle, currentAimPoint, transform.root);
 
-        Debug.DrawLine(
+       /* Debug.DrawLine(
             muzzle.position,
             result.finalPoint,
             result.hit ? Color.red : Color.yellow,
             1f
         );
+        */
+        Debug.DrawRay(muzzle.position, result.finalDirection * weaponRaycast.GetRange(), Color.green, 1f);
         //TODO: efectos visuales
         //-sonido de disparo
         //usar hit,hitInfoy finalPoint para efectos de impacto (struct deShootResult)

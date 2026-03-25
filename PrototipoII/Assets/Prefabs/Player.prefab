@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1450124672025767027}
   - component: {fileID: 9175901325043613306}
   - component: {fileID: 5189113411072403748}
+  - component: {fileID: 1108606433370880672}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -590,6 +591,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1108606433370880672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768667454981247352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772ec0a94ac1604b84dedecdf223b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGrenadeLauncher
+  cam: {fileID: 0}
+  throwPoint: {fileID: 0}
+  actionController: {fileID: 0}
+  grenadePrefab: {fileID: 0}
+  aimPlaneHeight: 0
+  throwForce: 12
+  upwardForce: 4
+  grenadeSlots: 010101
+  selectedSlot: -1
 --- !u!1 &3055115403607242388
 GameObject:
   m_ObjectHideFlags: 0
