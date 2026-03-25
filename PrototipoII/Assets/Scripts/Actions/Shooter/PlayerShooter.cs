@@ -31,7 +31,10 @@ public class PlayerShooter : MonoBehaviour
     [Header("FX")]
     [SerializeField] private string sfxID;
     [SerializeField] private float fireDuration = 0.1f;
+
     
+    [SerializeField] private TrailRenderer BulletTrail;
+    public float BulletSpeed;
     private Vector3 currentAimPoint;//punto de mira actual(raton)
     private Coroutine shootingCoroutine;//controla el tiempo de disparo
     private bool isAiming;
@@ -128,12 +131,14 @@ public class PlayerShooter : MonoBehaviour
 
         ShootResult result = weaponRaycast.Fire(muzzle, currentAimPoint, transform.root);
 
-        Debug.DrawLine(
+       /* Debug.DrawLine(
             muzzle.position,
             result.finalPoint,
             result.hit ? Color.red : Color.yellow,
             1f
         );
+        */
+        Debug.DrawRay(muzzle.position, result.finalDirection * weaponRaycast.GetRange(), Color.green, 1f);
         //TODO: efectos visuales
         //-sonido de disparo
         //usar hit,hitInfoy finalPoint para efectos de impacto (struct deShootResult)
@@ -166,8 +171,8 @@ public class PlayerShooter : MonoBehaviour
             
                 var rotation = Quaternion.LookRotation(-direction, Vector3.up);
                 
-                if (VFXManager.Instance)
-                    VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
+                //if (VFXManager.Instance)
+                    //VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
             }
             else
             {
@@ -188,8 +193,9 @@ public class PlayerShooter : MonoBehaviour
                 -2 * directionCfx.normalized.z, 
                 1));
         }
-
-       
+        
+        TrailRenderer trail = Instantiate(BulletTrail, muzzle.position, Quaternion.identity);
+        StartCoroutine(SpawnTrail(trail, GetAimPoint()));
 
         yield return new WaitForSeconds(fireDuration);
 
@@ -216,10 +222,20 @@ public class PlayerShooter : MonoBehaviour
         }
     }
     
-    
-    
-    
-    
-    
-    
+    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint)
+    {
+        Vector3 startPosition = Trail.transform.position;
+        float distance = Vector3.Distance(startPosition, HitPoint);
+        float remainingDistance = distance;
+
+        while (remainingDistance > 0)
+        {
+            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
+
+            remainingDistance -= BulletSpeed * Time.deltaTime;
+
+            yield return null;
+        }
+        Destroy(Trail.gameObject, Trail.time);
+    }
 }
