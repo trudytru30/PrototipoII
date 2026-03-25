@@ -8,7 +8,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 8f;
 
+    [Header("Visual Path")]
+    [SerializeField] private bool showPath;
+    [SerializeField] private float yOffset = 0.15f;
+    
     private NavMeshAgent navMeshAgent;
+    private LineRenderer pathLine;
     private Queue<Vector3> destinationQueue = new Queue<Vector3>();
     
     [SerializeField] private float stepSoundTimer = 0.6f;
@@ -18,6 +23,10 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        pathLine = GetComponent<LineRenderer>();
+        
+        pathLine.useWorldSpace = true;
+        pathLine.positionCount = 0;
     }
     
     private void Update()
@@ -33,6 +42,7 @@ public class Movement : MonoBehaviour
         {
             PlaySteppingSounds();
         }
+        UpdatePathVisual();
     }
 
     // Moverse al punto especificado con el raton
@@ -103,6 +113,27 @@ public class Movement : MonoBehaviour
             Debug.Log("Stepping sound");
             AudioManager.Instance.Play("steps");
             _tempStepSoundTimer = stepSoundTimer;
+        }
+    }
+
+    private void UpdatePathVisual()
+    {
+        if (!showPath || pathLine == null) return;
+
+        if (navMeshAgent.pathPending || !navMeshAgent.hasPath || navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            pathLine.positionCount = 0;
+            return;
+        }
+
+        Vector3[] corners = navMeshAgent.path.corners;
+        pathLine.positionCount = corners.Length;
+
+        for (int i = 0; i < corners.Length; i++)
+        {
+            Vector3 point = corners[i];
+            point.y += yOffset;
+            pathLine.SetPosition(i, point);
         }
     }
 }
