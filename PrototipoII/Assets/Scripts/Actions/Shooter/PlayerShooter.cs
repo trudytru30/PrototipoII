@@ -129,7 +129,10 @@ public class PlayerShooter : MonoBehaviour
 
         Transform muzzle = weaponArm != null ? weaponArm : transform;
 
-        ShootResult result = weaponRaycast.Fire(muzzle, currentAimPoint, transform.root);
+        Vector3 aimHeightCorrection = currentAimPoint;
+        aimHeightCorrection.y = muzzle.position.y;
+        
+        ShootResult result = weaponRaycast.Fire(muzzle, aimHeightCorrection, transform.root);
 
        /* Debug.DrawLine(
             muzzle.position,
@@ -195,7 +198,7 @@ public class PlayerShooter : MonoBehaviour
         }
         
         TrailRenderer trail = Instantiate(BulletTrail, muzzle.position, Quaternion.identity);
-        StartCoroutine(SpawnTrail(trail, GetAimPoint()));
+        StartCoroutine(SpawnTrail(trail, result.finalPoint));
 
         yield return new WaitForSeconds(fireDuration);
 
