@@ -29,6 +29,6 @@ public class EnemyVisibility : MonoBehaviour
     public void SetVisibility(bool visible)
     {
         if(enemyModel.activeSelf == visible) return;
-        Debug.Log("Enemy is invisible");
+        enemyModel.SetActive(visible);
     }
 }
