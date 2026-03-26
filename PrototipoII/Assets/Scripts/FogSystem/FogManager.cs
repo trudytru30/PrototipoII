@@ -18,7 +18,7 @@ public class FogManager : MonoBehaviour
     private int mapWidth, mapHeight;
     private Texture2D fogTexture;
     
-    [SerializeField] private int rayCount = 80;
+    [SerializeField] private int rayCount = 120;
     private HashSet<Vector2Int> visibleCells = new();
     private List<VisionSource> activeSources = new();
     private List<EnemyVisibility> enemiesVisibles = new();
@@ -186,7 +186,7 @@ public class FogManager : MonoBehaviour
     private void RevealLine(Vector3 start, Vector3 end)
     {
         float distance = Vector3.Distance(start, end);
-        int steps = Mathf.CeilToInt(distance/cellSize);
+        int steps = Mathf.CeilToInt(distance/(cellSize*0.5f));
 
         for (int i = 0; i <= steps; i++)
         {
@@ -195,6 +195,7 @@ public class FogManager : MonoBehaviour
             
             if (InsideGrid(cell))
             {
+                Vector3 cellCenter = GridToWorld(cell);
                 fogGrid[cell.x, cell.y] = FogState.None;
                 visibleCells.Add(cell);
             }
