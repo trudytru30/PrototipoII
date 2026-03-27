@@ -1056,6 +1056,17 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: b709985fc5baf8d4f82dff01b2433982, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1732784778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2374231221605537998, guid: 540f396d50b52664c82dfb25bcb53804, type: 3}
+  m_PrefabInstance: {fileID: 598320821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
 --- !u!1 &1828704699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,9 +1426,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7315297840015335242, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315297840015335242, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7315297840015335242, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 1732784778}
     - target: {fileID: 7930737970645742500, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.55
