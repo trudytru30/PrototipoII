@@ -129,6 +129,11 @@ public class EnemyController : MonoBehaviour
         currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Count;
         agent.SetDestination(patrolPoints[currentPatrolPointIndex].position);
     }
+
+    public void Stop()
+    {
+        agent.isStopped = true;
+    }
     
     // ===== ALERTA =====
     private void HandleAlert()

@@ -12,13 +12,18 @@ public class Health : MonoBehaviour
     [SerializeField] private Volume globalVolume;
     [SerializeField] private float maxVignetteIntensity = 0.5f;
     [SerializeField] bool isPlayer;
+    
 
     private Vignette _vignette;
+    [SerializeField] private MeshRenderer meshRenderer;
+    private EnemyController enemyController;
 
     
 
     private void Awake()
     {
+        enemyController = gameObject.GetComponent<EnemyController>();
+        
         _currentHealth = maxHealth;
         if (!isPlayer) return;
         if (globalVolume.profile.TryGet(out _vignette))
@@ -63,9 +68,31 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        if (isPlayer)
+        {
+            // Player death logic
+        }
+
+        else
+        {
+            // Enemy death logic
+            enemyController.Stop();
+            enemyController.enabled = false;
+        }
+
+        // Destroy(gameObject);
+        DieVisual();
+        
     }
 
     public float GetMaxHealth() => maxHealth;
     public float GetCurrentHealth() => _currentHealth;
+
+    // Visual de la muerte
+
+    private void DieVisual()
+    {
+        meshRenderer.material.color = Color.grey;
+        // Spawnea part�culas de sangre
+    }
 }
