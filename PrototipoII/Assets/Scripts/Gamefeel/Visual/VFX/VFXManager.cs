@@ -232,7 +232,7 @@ public class VFXManager : MonoBehaviour
     {
         if (decalID != "Blood") return;
         
-        AudioManager.Instance.PlayAtPoint("blood", position);
+        //AudioManager.Instance.PlayAtPoint("blood", position);
     }
 
     // Add new decal type at runtime

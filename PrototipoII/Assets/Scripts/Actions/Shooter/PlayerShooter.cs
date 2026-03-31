@@ -174,8 +174,8 @@ public class PlayerShooter : MonoBehaviour
             
                 var rotation = Quaternion.LookRotation(-direction, Vector3.up);
                 
-                //if (VFXManager.Instance)
-                    //VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
+                if (VFXManager.Instance)
+                    VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
             }
             else
             {
