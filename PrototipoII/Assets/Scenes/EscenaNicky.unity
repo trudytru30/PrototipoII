@@ -2340,7 +2340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5763bf713efd35a4892720f2bb950880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimelineUI
-  director: {fileID: 0}
+  director: {fileID: 2032346606}
   barRect: {fileID: 1301359412}
   cursorRect: {fileID: 524209486}
   timeText: {fileID: 51961151}
