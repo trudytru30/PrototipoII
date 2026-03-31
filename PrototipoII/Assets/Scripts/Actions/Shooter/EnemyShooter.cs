@@ -59,7 +59,7 @@ public class EnemyShooter : MonoBehaviour
         {
             targetPoint += Vector3.up * chestHeight;//*
         }
-
+        targetPoint.y=weaponArmE.position.y;
         //
         ShootResult result = weaponRaycastEnemy.Fire(
             weaponArmE,
@@ -68,10 +68,10 @@ public class EnemyShooter : MonoBehaviour
         );
 
         //dibuja la line del disparo, cyan si impacta, azul si no
-        Debug.DrawLine(
+        Debug.DrawRay(
             weaponArmE.position,
-            result.finalPoint,
-            result.hit ? Color.cyan : Color.blue,
+            result.finalDirection * weaponRaycastEnemy.GetRange(),
+            Color.cyan,
             1f
         );
 

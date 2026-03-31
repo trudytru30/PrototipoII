@@ -19,8 +19,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private List<Transform> patrolPoints;
     [SerializeField] private float stopTime = 3f;
     [SerializeField] private float speed = 3.5f;
+    [SerializeField] private float maxTargetAngle = 40f;
+    [SerializeField] private float rotationSpeed = 50f;
     private int currentPatrolPointIndex;
     private float waitTimer;
+    
 
     [SerializeField] private EnemyVisionSource vision;
 
@@ -48,7 +51,7 @@ public class EnemyController : MonoBehaviour
     }
 
     // Función para rotar hacia un punto
-    public void RotateEnemy(Vector3 point, float rotationSpeed = 50f)
+    public void RotateEnemy(Vector3 point)
     {
         Vector3 direction = point - transform.position;
         direction.y = 0f;
@@ -147,7 +150,7 @@ public class EnemyController : MonoBehaviour
         RotateEnemy(player.position);  // Rotar hacia el player para dispararle
 
         // TODO: Disparar al player
-        if (shooter != null)
+        if (shooter)
         {
             shooter.SetTarget(player);
 
@@ -158,11 +161,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private bool IsFacingtarget(Vector3 target, float maxAngle = 40f)
+    // Método que comprueba si el enemigo está mirando en dirección a
+    // su siguiente punto de patrulla antes de empezar a moverse
+    private bool IsFacingtarget(Vector3 target)
     {
         Vector3 dir = target - transform.position;
         dir.y = 0f;
         float angle = Vector3.Angle(transform.forward, dir);
-        return angle < maxAngle;
+        return angle < maxTargetAngle;
     }
 }
