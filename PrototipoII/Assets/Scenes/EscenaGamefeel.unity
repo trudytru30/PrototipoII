@@ -1196,57 +1196,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1768667454981247352, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
   m_PrefabInstance: {fileID: 3041894466452919029}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &925318413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 925318415}
-  - component: {fileID: 925318414}
-  m_Layer: 0
-  m_Name: FogManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &925318414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925318413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21605503265e717419b492970fa982fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FogManager
-  obstaclesMask:
-    serializedVersion: 2
-    m_Bits: 64
-  mapTransform: {fileID: 1650551711}
-  cellSize: 1
-  fogMaterial: {fileID: 2100000, guid: b7f84eccb28893f4fb5c2a58221ecb12, type: 2}
-  rayCount: 120
---- !u!4 &925318415
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925318413}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &973152082
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,6 +3671,67 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1001270446344506510
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 345378247801785373, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_Name
+      value: FogManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 844982450386989505, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: mapTransform
+      value: 
+      objectReference: {fileID: 1650551711}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823682929697716269, guid: 172a10e64491d224f8035e81797f4000, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 172a10e64491d224f8035e81797f4000, type: 3}
 --- !u!1001 &3041894466452919029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3973,7 +3983,7 @@ SceneRoots:
   - {fileID: 1633996176}
   - {fileID: 1650551711}
   - {fileID: 1063227478}
-  - {fileID: 925318415}
+  - {fileID: 1001270446344506510}
   - {fileID: 2067930951}
   - {fileID: 598320821}
   - {fileID: 1497749608}
