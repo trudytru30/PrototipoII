@@ -375,7 +375,7 @@ MonoBehaviour:
   range: 100
   shootMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 375
   useSpread: 0
   spreadAngle: 0
 --- !u!82 &9175901325043613306

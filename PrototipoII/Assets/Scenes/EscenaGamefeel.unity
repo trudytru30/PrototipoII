@@ -3754,6 +3754,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1450124672025767027, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      propertyPath: shootMask.m_Bits
+      value: 375
+      objectReference: {fileID: 0}
     - target: {fileID: 1768667454981247352, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3878,6 +3882,10 @@ PrefabInstance:
       propertyPath: meshRenderer
       value: 
       objectReference: {fileID: 1762429366}
+    - target: {fileID: 3873648486944238248, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5353118579198851306, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: vision
       value: 

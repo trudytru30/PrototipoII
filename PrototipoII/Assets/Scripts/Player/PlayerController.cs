@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     // Activar/desactivar los inputs
     private void OnEnable()
     {
-        inputs.Gameplay.Enable();
+       inputs.Gameplay.Enable();
     }
 
     private void OnDisable()

@@ -183,6 +183,8 @@ public class PlayerShooter : MonoBehaviour
                     AudioManager.Instance.Play("hitWall");
             }
         }
+        
+        
 
         //cfx
         

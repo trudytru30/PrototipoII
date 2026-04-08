@@ -1015,7 +1015,7 @@ GameObject:
   - component: {fileID: 7376413}
   - component: {fileID: 7376412}
   - component: {fileID: 7376411}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2377,7 +2377,7 @@ GameObject:
   - component: {fileID: 15196188}
   - component: {fileID: 15196187}
   - component: {fileID: 15196186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (153)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2907,7 +2907,7 @@ GameObject:
   - component: {fileID: 22587741}
   - component: {fileID: 22587740}
   - component: {fileID: 22587739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3437,7 +3437,7 @@ GameObject:
   - component: {fileID: 28759267}
   - component: {fileID: 28759266}
   - component: {fileID: 28759265}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (144)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3794,7 +3794,7 @@ GameObject:
   - component: {fileID: 32348693}
   - component: {fileID: 32348692}
   - component: {fileID: 32348691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (136)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4854,7 +4854,7 @@ GameObject:
   - component: {fileID: 42261291}
   - component: {fileID: 42261290}
   - component: {fileID: 42261289}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (117)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5460,7 +5460,7 @@ GameObject:
   - component: {fileID: 48207011}
   - component: {fileID: 48207010}
   - component: {fileID: 48207009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (180)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6396,7 +6396,7 @@ GameObject:
   - component: {fileID: 59954902}
   - component: {fileID: 59954901}
   - component: {fileID: 59954900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (173)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6926,7 +6926,7 @@ GameObject:
   - component: {fileID: 66614312}
   - component: {fileID: 66614311}
   - component: {fileID: 66614310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (116)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7354,7 +7354,7 @@ GameObject:
   - component: {fileID: 67994416}
   - component: {fileID: 67994415}
   - component: {fileID: 67994414}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7706,7 +7706,7 @@ GameObject:
   - component: {fileID: 68517094}
   - component: {fileID: 68517093}
   - component: {fileID: 68517092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8682,6 +8682,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (7)
@@ -8935,7 +8939,7 @@ GameObject:
   - component: {fileID: 85556294}
   - component: {fileID: 85556293}
   - component: {fileID: 85556292}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (220)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9821,7 +9825,7 @@ GameObject:
   - component: {fileID: 95818094}
   - component: {fileID: 95818093}
   - component: {fileID: 95818092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10732,7 +10736,7 @@ GameObject:
   - component: {fileID: 102523395}
   - component: {fileID: 102523394}
   - component: {fileID: 102523393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (208)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11084,7 +11088,7 @@ GameObject:
   - component: {fileID: 106310556}
   - component: {fileID: 106310555}
   - component: {fileID: 106310554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (169)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12856,7 +12860,7 @@ GameObject:
   - component: {fileID: 124610063}
   - component: {fileID: 124610062}
   - component: {fileID: 124610061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13564,7 +13568,7 @@ GameObject:
   - component: {fileID: 129820073}
   - component: {fileID: 129820072}
   - component: {fileID: 129820071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (131)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13992,7 +13996,7 @@ GameObject:
   - component: {fileID: 139796601}
   - component: {fileID: 139796600}
   - component: {fileID: 139796599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (183)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14522,7 +14526,7 @@ GameObject:
   - component: {fileID: 141407457}
   - component: {fileID: 141407456}
   - component: {fileID: 141407455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15266,7 +15270,7 @@ GameObject:
   - component: {fileID: 158020286}
   - component: {fileID: 158020285}
   - component: {fileID: 158020284}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (108)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16615,7 +16619,7 @@ GameObject:
   - component: {fileID: 168713613}
   - component: {fileID: 168713612}
   - component: {fileID: 168713611}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17608,7 +17612,7 @@ GameObject:
   - component: {fileID: 186165558}
   - component: {fileID: 186165557}
   - component: {fileID: 186165556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18138,7 +18142,7 @@ GameObject:
   - component: {fileID: 187253528}
   - component: {fileID: 187253527}
   - component: {fileID: 187253526}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (154)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18490,7 +18494,7 @@ GameObject:
   - component: {fileID: 187603809}
   - component: {fileID: 187603808}
   - component: {fileID: 187603807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (100)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19096,7 +19100,7 @@ GameObject:
   - component: {fileID: 193212464}
   - component: {fileID: 193212463}
   - component: {fileID: 193212462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19702,7 +19706,7 @@ GameObject:
   - component: {fileID: 197314986}
   - component: {fileID: 197314985}
   - component: {fileID: 197314984}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (162)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22308,7 +22312,7 @@ GameObject:
   - component: {fileID: 223362820}
   - component: {fileID: 223362819}
   - component: {fileID: 223362818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22838,7 +22842,7 @@ GameObject:
   - component: {fileID: 226993040}
   - component: {fileID: 226993039}
   - component: {fileID: 226993038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (187)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25594,7 +25598,7 @@ GameObject:
   - component: {fileID: 282699242}
   - component: {fileID: 282699241}
   - component: {fileID: 282699240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (133)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26298,7 +26302,7 @@ GameObject:
   - component: {fileID: 288034395}
   - component: {fileID: 288034394}
   - component: {fileID: 288034393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (225)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26828,7 +26832,7 @@ GameObject:
   - component: {fileID: 292450080}
   - component: {fileID: 292450079}
   - component: {fileID: 292450078}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (234)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28244,7 +28248,7 @@ GameObject:
   - component: {fileID: 305837076}
   - component: {fileID: 305837075}
   - component: {fileID: 305837074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (105)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29834,7 +29838,7 @@ GameObject:
   - component: {fileID: 319774355}
   - component: {fileID: 319774354}
   - component: {fileID: 319774353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (98)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30186,7 +30190,7 @@ GameObject:
   - component: {fileID: 328846499}
   - component: {fileID: 328846498}
   - component: {fileID: 328846497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (258)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30538,7 +30542,7 @@ GameObject:
   - component: {fileID: 329549024}
   - component: {fileID: 329549023}
   - component: {fileID: 329549022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (222)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31099,7 +31103,7 @@ GameObject:
   - component: {fileID: 335119375}
   - component: {fileID: 335119374}
   - component: {fileID: 335119373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (111)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31482,7 +31486,7 @@ GameObject:
   - component: {fileID: 339631477}
   - component: {fileID: 339631476}
   - component: {fileID: 339631475}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (191)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32012,7 +32016,7 @@ GameObject:
   - component: {fileID: 345154740}
   - component: {fileID: 345154739}
   - component: {fileID: 345154738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33316,7 +33320,7 @@ GameObject:
   - component: {fileID: 358303077}
   - component: {fileID: 358303076}
   - component: {fileID: 358303075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34096,7 +34100,7 @@ GameObject:
   - component: {fileID: 369890457}
   - component: {fileID: 369890456}
   - component: {fileID: 369890455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34579,7 +34583,7 @@ GameObject:
   - component: {fileID: 375994966}
   - component: {fileID: 375994965}
   - component: {fileID: 375994964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (125)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35007,7 +35011,7 @@ GameObject:
   - component: {fileID: 376388271}
   - component: {fileID: 376388270}
   - component: {fileID: 376388269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (216)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36067,7 +36071,7 @@ GameObject:
   - component: {fileID: 391521020}
   - component: {fileID: 391521019}
   - component: {fileID: 391521018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (257)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36419,7 +36423,7 @@ GameObject:
   - component: {fileID: 392770714}
   - component: {fileID: 392770713}
   - component: {fileID: 392770712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (138)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37483,7 +37487,7 @@ GameObject:
   - component: {fileID: 404894220}
   - component: {fileID: 404894219}
   - component: {fileID: 404894218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39247,7 +39251,7 @@ GameObject:
   - component: {fileID: 438296815}
   - component: {fileID: 438296814}
   - component: {fileID: 438296813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43831,6 +43835,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (5)
@@ -43906,7 +43914,7 @@ GameObject:
   - component: {fileID: 468257481}
   - component: {fileID: 468257480}
   - component: {fileID: 468257479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45282,7 +45290,7 @@ GameObject:
   - component: {fileID: 498615305}
   - component: {fileID: 498615304}
   - component: {fileID: 498615303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (168)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45634,7 +45642,7 @@ GameObject:
   - component: {fileID: 508731776}
   - component: {fileID: 508731775}
   - component: {fileID: 508731774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (181)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47431,7 +47439,7 @@ GameObject:
   - component: {fileID: 540158183}
   - component: {fileID: 540158182}
   - component: {fileID: 540158181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48491,7 +48499,7 @@ GameObject:
   - component: {fileID: 547695279}
   - component: {fileID: 547695278}
   - component: {fileID: 547695277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (177)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50067,7 +50075,7 @@ GameObject:
   - component: {fileID: 570361948}
   - component: {fileID: 570361947}
   - component: {fileID: 570361946}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (161)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50495,7 +50503,7 @@ GameObject:
   - component: {fileID: 573757817}
   - component: {fileID: 573757816}
   - component: {fileID: 573757815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (213)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52089,7 +52097,7 @@ GameObject:
   - component: {fileID: 588157691}
   - component: {fileID: 588157690}
   - component: {fileID: 588157689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52797,7 +52805,7 @@ GameObject:
   - component: {fileID: 601868682}
   - component: {fileID: 601868681}
   - component: {fileID: 601868680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (122)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53999,7 +54007,7 @@ GameObject:
   - component: {fileID: 618472910}
   - component: {fileID: 618472909}
   - component: {fileID: 618472908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (137)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55095,7 +55103,7 @@ GameObject:
   - component: {fileID: 621617160}
   - component: {fileID: 621617159}
   - component: {fileID: 621617158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (214)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55447,7 +55455,7 @@ GameObject:
   - component: {fileID: 621626692}
   - component: {fileID: 621626691}
   - component: {fileID: 621626690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (215)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55977,7 +55985,7 @@ GameObject:
   - component: {fileID: 622131494}
   - component: {fileID: 622131493}
   - component: {fileID: 622131492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (236)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56329,7 +56337,7 @@ GameObject:
   - component: {fileID: 623522122}
   - component: {fileID: 623522121}
   - component: {fileID: 623522120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56681,7 +56689,7 @@ GameObject:
   - component: {fileID: 628507946}
   - component: {fileID: 628507945}
   - component: {fileID: 628507944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (227)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57033,7 +57041,7 @@ GameObject:
   - component: {fileID: 630694940}
   - component: {fileID: 630694939}
   - component: {fileID: 630694938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58840,7 +58848,7 @@ GameObject:
   - component: {fileID: 662565280}
   - component: {fileID: 662565279}
   - component: {fileID: 662565278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (233)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60438,7 +60446,7 @@ GameObject:
   - component: {fileID: 685583833}
   - component: {fileID: 685583832}
   - component: {fileID: 685583831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (255)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60968,7 +60976,7 @@ GameObject:
   - component: {fileID: 686949934}
   - component: {fileID: 686949933}
   - component: {fileID: 686949932}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (198)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61676,7 +61684,7 @@ GameObject:
   - component: {fileID: 694803015}
   - component: {fileID: 694803014}
   - component: {fileID: 694803013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (142)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62104,7 +62112,7 @@ GameObject:
   - component: {fileID: 696500433}
   - component: {fileID: 696500432}
   - component: {fileID: 696500431}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (256)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62456,7 +62464,7 @@ GameObject:
   - component: {fileID: 699653143}
   - component: {fileID: 699653142}
   - component: {fileID: 699653141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (226)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62808,7 +62816,7 @@ GameObject:
   - component: {fileID: 699844411}
   - component: {fileID: 699844410}
   - component: {fileID: 699844409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (199)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63160,7 +63168,7 @@ GameObject:
   - component: {fileID: 701065078}
   - component: {fileID: 701065077}
   - component: {fileID: 701065076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (179)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64750,7 +64758,7 @@ GameObject:
   - component: {fileID: 719356383}
   - component: {fileID: 719356382}
   - component: {fileID: 719356381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (119)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65911,7 +65919,7 @@ GameObject:
   - component: {fileID: 733760742}
   - component: {fileID: 733760741}
   - component: {fileID: 733760740}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66793,7 +66801,7 @@ GameObject:
   - component: {fileID: 735782050}
   - component: {fileID: 735782049}
   - component: {fileID: 735782048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (175)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67399,7 +67407,7 @@ GameObject:
   - component: {fileID: 743147103}
   - component: {fileID: 743147102}
   - component: {fileID: 743147101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (146)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71446,7 +71454,7 @@ GameObject:
   - component: {fileID: 782683903}
   - component: {fileID: 782683902}
   - component: {fileID: 782683901}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (166)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72789,7 +72797,7 @@ GameObject:
   - component: {fileID: 795110325}
   - component: {fileID: 795110324}
   - component: {fileID: 795110323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (96)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73141,7 +73149,7 @@ GameObject:
   - component: {fileID: 797323982}
   - component: {fileID: 797323981}
   - component: {fileID: 797323980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (149)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74023,7 +74031,7 @@ GameObject:
   - component: {fileID: 799338102}
   - component: {fileID: 799338101}
   - component: {fileID: 799338100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (113)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75916,7 +75924,7 @@ GameObject:
   - component: {fileID: 854057588}
   - component: {fileID: 854057587}
   - component: {fileID: 854057586}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (160)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76624,7 +76632,7 @@ GameObject:
   - component: {fileID: 863452163}
   - component: {fileID: 863452162}
   - component: {fileID: 863452161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (148)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77052,7 +77060,7 @@ GameObject:
   - component: {fileID: 870035756}
   - component: {fileID: 870035755}
   - component: {fileID: 870035754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (223)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78673,7 +78681,7 @@ GameObject:
   - component: {fileID: 883118706}
   - component: {fileID: 883118705}
   - component: {fileID: 883118704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79025,7 +79033,7 @@ GameObject:
   - component: {fileID: 883357028}
   - component: {fileID: 883357027}
   - component: {fileID: 883357026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (239)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80513,7 +80521,7 @@ GameObject:
   - component: {fileID: 899357676}
   - component: {fileID: 899357675}
   - component: {fileID: 899357674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (112)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85946,7 +85954,7 @@ GameObject:
   - component: {fileID: 928549862}
   - component: {fileID: 928549861}
   - component: {fileID: 928549860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (188)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86685,7 +86693,7 @@ GameObject:
   - component: {fileID: 949544087}
   - component: {fileID: 949544086}
   - component: {fileID: 949544085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (157)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88768,7 +88776,7 @@ GameObject:
   - component: {fileID: 993912110}
   - component: {fileID: 993912109}
   - component: {fileID: 993912108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (145)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90006,7 +90014,7 @@ GameObject:
   - component: {fileID: 1005735004}
   - component: {fileID: 1005735003}
   - component: {fileID: 1005735002}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (211)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90710,7 +90718,7 @@ GameObject:
   - component: {fileID: 1006550377}
   - component: {fileID: 1006550376}
   - component: {fileID: 1006550375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (197)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91414,7 +91422,7 @@ GameObject:
   - component: {fileID: 1015402297}
   - component: {fileID: 1015402296}
   - component: {fileID: 1015402295}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92020,7 +92028,7 @@ GameObject:
   - component: {fileID: 1023707607}
   - component: {fileID: 1023707606}
   - component: {fileID: 1023707605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92372,7 +92380,7 @@ GameObject:
   - component: {fileID: 1026381932}
   - component: {fileID: 1026381931}
   - component: {fileID: 1026381930}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (240)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92724,7 +92732,7 @@ GameObject:
   - component: {fileID: 1027342324}
   - component: {fileID: 1027342323}
   - component: {fileID: 1027342322}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (134)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93152,7 +93160,7 @@ GameObject:
   - component: {fileID: 1029497001}
   - component: {fileID: 1029497000}
   - component: {fileID: 1029496999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95046,7 +95054,7 @@ GameObject:
   - component: {fileID: 1043358913}
   - component: {fileID: 1043358912}
   - component: {fileID: 1043358911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (247)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95785,7 +95793,7 @@ GameObject:
   - component: {fileID: 1045711321}
   - component: {fileID: 1045711320}
   - component: {fileID: 1045711319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (241)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96213,7 +96221,7 @@ GameObject:
   - component: {fileID: 1048247815}
   - component: {fileID: 1048247814}
   - component: {fileID: 1048247813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (94)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96819,7 +96827,7 @@ GameObject:
   - component: {fileID: 1051253317}
   - component: {fileID: 1051253316}
   - component: {fileID: 1051253315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (130)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97558,7 +97566,7 @@ GameObject:
   - component: {fileID: 1058818381}
   - component: {fileID: 1058818380}
   - component: {fileID: 1058818379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98262,7 +98270,7 @@ GameObject:
   - component: {fileID: 1062534306}
   - component: {fileID: 1062534305}
   - component: {fileID: 1062534304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (147)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98645,7 +98653,7 @@ GameObject:
   - component: {fileID: 1063600014}
   - component: {fileID: 1063600013}
   - component: {fileID: 1063600012}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (104)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98997,7 +99005,7 @@ GameObject:
   - component: {fileID: 1066200319}
   - component: {fileID: 1066200318}
   - component: {fileID: 1066200317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (184)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102886,7 +102894,7 @@ GameObject:
   - component: {fileID: 1090805849}
   - component: {fileID: 1090805848}
   - component: {fileID: 1090805847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103416,7 +103424,7 @@ GameObject:
   - component: {fileID: 1092037374}
   - component: {fileID: 1092037373}
   - component: {fileID: 1092037372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (155)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103768,7 +103776,7 @@ GameObject:
   - component: {fileID: 1092056010}
   - component: {fileID: 1092056009}
   - component: {fileID: 1092056008}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (218)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104120,7 +104128,7 @@ GameObject:
   - component: {fileID: 1093497523}
   - component: {fileID: 1093497522}
   - component: {fileID: 1093497521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (121)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104672,6 +104680,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -105689,7 +105701,7 @@ GameObject:
   - component: {fileID: 1107672024}
   - component: {fileID: 1107672023}
   - component: {fileID: 1107672022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107486,7 +107498,7 @@ GameObject:
   - component: {fileID: 1125635057}
   - component: {fileID: 1125635056}
   - component: {fileID: 1125635055}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (143)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108779,7 +108791,7 @@ GameObject:
   - component: {fileID: 1135610788}
   - component: {fileID: 1135610787}
   - component: {fileID: 1135610786}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109487,7 +109499,7 @@ GameObject:
   - component: {fileID: 1144535699}
   - component: {fileID: 1144535698}
   - component: {fileID: 1144535697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (201)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111642,7 +111654,7 @@ GameObject:
   - component: {fileID: 1166713815}
   - component: {fileID: 1166713814}
   - component: {fileID: 1166713813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (176)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112524,7 +112536,7 @@ GameObject:
   - component: {fileID: 1170087472}
   - component: {fileID: 1170087471}
   - component: {fileID: 1170087470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (246)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113410,7 +113422,7 @@ GameObject:
   - component: {fileID: 1181133221}
   - component: {fileID: 1181133220}
   - component: {fileID: 1181133219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (194)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113762,7 +113774,7 @@ GameObject:
   - component: {fileID: 1181529865}
   - component: {fileID: 1181529864}
   - component: {fileID: 1181529863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114190,7 +114202,7 @@ GameObject:
   - component: {fileID: 1190549029}
   - component: {fileID: 1190549028}
   - component: {fileID: 1190549027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (97)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114604,7 +114616,7 @@ GameObject:
   - component: {fileID: 1199796816}
   - component: {fileID: 1199796815}
   - component: {fileID: 1199796814}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (185)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115490,7 +115502,7 @@ GameObject:
   - component: {fileID: 1206975230}
   - component: {fileID: 1206975229}
   - component: {fileID: 1206975228}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (123)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115918,7 +115930,7 @@ GameObject:
   - component: {fileID: 1211046303}
   - component: {fileID: 1211046302}
   - component: {fileID: 1211046301}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116982,7 +116994,7 @@ GameObject:
   - component: {fileID: 1228288036}
   - component: {fileID: 1228288035}
   - component: {fileID: 1228288034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117588,7 +117600,7 @@ GameObject:
   - component: {fileID: 1229268933}
   - component: {fileID: 1229268932}
   - component: {fileID: 1229268931}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118470,7 +118482,7 @@ GameObject:
   - component: {fileID: 1234384073}
   - component: {fileID: 1234384072}
   - component: {fileID: 1234384071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (203)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120751,7 +120763,7 @@ GameObject:
   - component: {fileID: 1257683514}
   - component: {fileID: 1257683513}
   - component: {fileID: 1257683512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122993,7 +123005,7 @@ GameObject:
   - component: {fileID: 1267030937}
   - component: {fileID: 1267030936}
   - component: {fileID: 1267030935}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (219)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123697,7 +123709,7 @@ GameObject:
   - component: {fileID: 1272653585}
   - component: {fileID: 1272653584}
   - component: {fileID: 1272653583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (190)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124227,7 +124239,7 @@ GameObject:
   - component: {fileID: 1274055452}
   - component: {fileID: 1274055451}
   - component: {fileID: 1274055450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (151)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125347,7 +125359,7 @@ GameObject:
   - component: {fileID: 1285933552}
   - component: {fileID: 1285933551}
   - component: {fileID: 1285933550}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (245)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125699,7 +125711,7 @@ GameObject:
   - component: {fileID: 1286182777}
   - component: {fileID: 1286182776}
   - component: {fileID: 1286182775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (249)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126051,7 +126063,7 @@ GameObject:
   - component: {fileID: 1288592227}
   - component: {fileID: 1288592226}
   - component: {fileID: 1288592225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126933,7 +126945,7 @@ GameObject:
   - component: {fileID: 1299768523}
   - component: {fileID: 1299768522}
   - component: {fileID: 1299768521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (200)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127924,7 +127936,7 @@ GameObject:
   - component: {fileID: 1308179739}
   - component: {fileID: 1308179738}
   - component: {fileID: 1308179737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (120)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128485,7 +128497,7 @@ GameObject:
   - component: {fileID: 1316734219}
   - component: {fileID: 1316734218}
   - component: {fileID: 1316734217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (248)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129193,7 +129205,7 @@ GameObject:
   - component: {fileID: 1322996664}
   - component: {fileID: 1322996663}
   - component: {fileID: 1322996662}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129754,7 +129766,7 @@ GameObject:
   - component: {fileID: 1347680515}
   - component: {fileID: 1347680514}
   - component: {fileID: 1347680513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130319,7 +130331,7 @@ GameObject:
   - component: {fileID: 1353388820}
   - component: {fileID: 1353388819}
   - component: {fileID: 1353388818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131596,7 +131608,7 @@ GameObject:
   - component: {fileID: 1367407693}
   - component: {fileID: 1367407692}
   - component: {fileID: 1367407691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (124)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131948,7 +131960,7 @@ GameObject:
   - component: {fileID: 1370007458}
   - component: {fileID: 1370007457}
   - component: {fileID: 1370007456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (192)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132318,6 +132330,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
@@ -132929,6 +132945,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -133004,7 +133024,7 @@ GameObject:
   - component: {fileID: 1385899925}
   - component: {fileID: 1385899924}
   - component: {fileID: 1385899923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134958,7 +134978,7 @@ GameObject:
   - component: {fileID: 1401901486}
   - component: {fileID: 1401901485}
   - component: {fileID: 1401901484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135698,7 +135718,7 @@ GameObject:
   - component: {fileID: 1409135752}
   - component: {fileID: 1409135751}
   - component: {fileID: 1409135750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136050,7 +136070,7 @@ GameObject:
   - component: {fileID: 1410456015}
   - component: {fileID: 1410456014}
   - component: {fileID: 1410456013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (158)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136478,7 +136498,7 @@ GameObject:
   - component: {fileID: 1411185549}
   - component: {fileID: 1411185548}
   - component: {fileID: 1411185547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (140)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136830,7 +136850,7 @@ GameObject:
   - component: {fileID: 1416445198}
   - component: {fileID: 1416445197}
   - component: {fileID: 1416445196}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (253)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137360,7 +137380,7 @@ GameObject:
   - component: {fileID: 1423191661}
   - component: {fileID: 1423191660}
   - component: {fileID: 1423191659}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (128)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137712,7 +137732,7 @@ GameObject:
   - component: {fileID: 1424976571}
   - component: {fileID: 1424976570}
   - component: {fileID: 1424976569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138064,7 +138084,7 @@ GameObject:
   - component: {fileID: 1426173752}
   - component: {fileID: 1426173751}
   - component: {fileID: 1426173750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (167)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138416,7 +138436,7 @@ GameObject:
   - component: {fileID: 1426202499}
   - component: {fileID: 1426202498}
   - component: {fileID: 1426202497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (172)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139654,7 +139674,7 @@ GameObject:
   - component: {fileID: 1431126981}
   - component: {fileID: 1431126980}
   - component: {fileID: 1431126979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140006,7 +140026,7 @@ GameObject:
   - component: {fileID: 1431300766}
   - component: {fileID: 1431300765}
   - component: {fileID: 1431300764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141600,7 +141620,7 @@ GameObject:
   - component: {fileID: 1445205625}
   - component: {fileID: 1445205624}
   - component: {fileID: 1445205623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (251)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141952,7 +141972,7 @@ GameObject:
   - component: {fileID: 1446914083}
   - component: {fileID: 1446914082}
   - component: {fileID: 1446914081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143546,7 +143566,7 @@ GameObject:
   - component: {fileID: 1462390339}
   - component: {fileID: 1462390338}
   - component: {fileID: 1462390337}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (174)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145614,7 +145634,7 @@ GameObject:
   - component: {fileID: 1474895573}
   - component: {fileID: 1474895572}
   - component: {fileID: 1474895571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (182)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146887,7 +146907,7 @@ GameObject:
   - component: {fileID: 1503175100}
   - component: {fileID: 1503175099}
   - component: {fileID: 1503175098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (109)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147595,7 +147615,7 @@ GameObject:
   - component: {fileID: 1508124379}
   - component: {fileID: 1508124378}
   - component: {fileID: 1508124377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (170)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148303,7 +148323,7 @@ GameObject:
   - component: {fileID: 1521612776}
   - component: {fileID: 1521612775}
   - component: {fileID: 1521612774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (237)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148686,7 +148706,7 @@ GameObject:
   - component: {fileID: 1526633869}
   - component: {fileID: 1526633868}
   - component: {fileID: 1526633867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149038,7 +149058,7 @@ GameObject:
   - component: {fileID: 1529072917}
   - component: {fileID: 1529072916}
   - component: {fileID: 1529072915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (163)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149484,6 +149504,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (6)
@@ -150654,7 +150678,7 @@ GameObject:
   - component: {fileID: 1545286258}
   - component: {fileID: 1545286257}
   - component: {fileID: 1545286256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (231)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151567,7 +151591,7 @@ GameObject:
   - component: {fileID: 1555213908}
   - component: {fileID: 1555213907}
   - component: {fileID: 1555213906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (107)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152309,7 +152333,7 @@ GameObject:
   - component: {fileID: 1558987460}
   - component: {fileID: 1558987459}
   - component: {fileID: 1558987458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152691,6 +152715,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
@@ -152944,7 +152972,7 @@ GameObject:
   - component: {fileID: 1561961199}
   - component: {fileID: 1561961198}
   - component: {fileID: 1561961197}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (141)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153474,7 +153502,7 @@ GameObject:
   - component: {fileID: 1566729784}
   - component: {fileID: 1566729783}
   - component: {fileID: 1566729782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (207)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154534,7 +154562,7 @@ GameObject:
   - component: {fileID: 1585211134}
   - component: {fileID: 1585211133}
   - component: {fileID: 1585211132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154886,7 +154914,7 @@ GameObject:
   - component: {fileID: 1588389387}
   - component: {fileID: 1588389386}
   - component: {fileID: 1588389385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (165)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155238,7 +155266,7 @@ GameObject:
   - component: {fileID: 1593978360}
   - component: {fileID: 1593978359}
   - component: {fileID: 1593978358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (178)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155799,7 +155827,7 @@ GameObject:
   - component: {fileID: 1597220747}
   - component: {fileID: 1597220746}
   - component: {fileID: 1597220745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156227,7 +156255,7 @@ GameObject:
   - component: {fileID: 1602156075}
   - component: {fileID: 1602156074}
   - component: {fileID: 1602156073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (195)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158821,7 +158849,7 @@ GameObject:
   - component: {fileID: 1607570356}
   - component: {fileID: 1607570355}
   - component: {fileID: 1607570354}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (135)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159173,7 +159201,7 @@ GameObject:
   - component: {fileID: 1610344584}
   - component: {fileID: 1610344583}
   - component: {fileID: 1610344582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (230)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163414,7 +163442,7 @@ GameObject:
   - component: {fileID: 1656448250}
   - component: {fileID: 1656448249}
   - component: {fileID: 1656448248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (129)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163944,7 +163972,7 @@ GameObject:
   - component: {fileID: 1657822594}
   - component: {fileID: 1657822593}
   - component: {fileID: 1657822592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164296,7 +164324,7 @@ GameObject:
   - component: {fileID: 1659255991}
   - component: {fileID: 1659255990}
   - component: {fileID: 1659255989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (221)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164648,7 +164676,7 @@ GameObject:
   - component: {fileID: 1662077107}
   - component: {fileID: 1662077106}
   - component: {fileID: 1662077105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (252)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165000,7 +165028,7 @@ GameObject:
   - component: {fileID: 1666432003}
   - component: {fileID: 1666432002}
   - component: {fileID: 1666432001}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (242)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165428,7 +165456,7 @@ GameObject:
   - component: {fileID: 1671312633}
   - component: {fileID: 1671312632}
   - component: {fileID: 1671312631}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (86)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165856,7 +165884,7 @@ GameObject:
   - component: {fileID: 1671630135}
   - component: {fileID: 1671630134}
   - component: {fileID: 1671630133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (193)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167150,7 +167178,7 @@ GameObject:
   - component: {fileID: 1690433981}
   - component: {fileID: 1690433980}
   - component: {fileID: 1690433979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (210)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167502,7 +167530,7 @@ GameObject:
   - component: {fileID: 1692886644}
   - component: {fileID: 1692886643}
   - component: {fileID: 1692886642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168740,7 +168768,7 @@ GameObject:
   - component: {fileID: 1703588543}
   - component: {fileID: 1703588542}
   - component: {fileID: 1703588541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169092,7 +169120,7 @@ GameObject:
   - component: {fileID: 1705595176}
   - component: {fileID: 1705595175}
   - component: {fileID: 1705595174}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (101)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169520,7 +169548,7 @@ GameObject:
   - component: {fileID: 1705753614}
   - component: {fileID: 1705753613}
   - component: {fileID: 1705753612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169903,7 +169931,7 @@ GameObject:
   - component: {fileID: 1711819840}
   - component: {fileID: 1711819839}
   - component: {fileID: 1711819838}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (118)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171227,7 +171255,7 @@ GameObject:
   - component: {fileID: 1726923389}
   - component: {fileID: 1726923388}
   - component: {fileID: 1726923387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (235)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171655,7 +171683,7 @@ GameObject:
   - component: {fileID: 1726979793}
   - component: {fileID: 1726979792}
   - component: {fileID: 1726979791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (206)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173723,7 +173751,7 @@ GameObject:
   - component: {fileID: 1737285624}
   - component: {fileID: 1737285623}
   - component: {fileID: 1737285622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174075,7 +174103,7 @@ GameObject:
   - component: {fileID: 1742986288}
   - component: {fileID: 1742986287}
   - component: {fileID: 1742986286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174605,7 +174633,7 @@ GameObject:
   - component: {fileID: 1747892200}
   - component: {fileID: 1747892199}
   - component: {fileID: 1747892198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (202)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175665,7 +175693,7 @@ GameObject:
   - component: {fileID: 1761037698}
   - component: {fileID: 1761037697}
   - component: {fileID: 1761037696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (127)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176582,7 +176610,7 @@ GameObject:
   - component: {fileID: 1773822767}
   - component: {fileID: 1773822766}
   - component: {fileID: 1773822765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176934,7 +176962,7 @@ GameObject:
   - component: {fileID: 1775448290}
   - component: {fileID: 1775448289}
   - component: {fileID: 1775448288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (205)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177672,6 +177700,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 31860264}
+    - target: {fileID: 5429582447112324443, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6717760097881652689, guid: d5c29cf0ab3dbd44e954bc6ed929b6f8, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -178126,7 +178158,7 @@ GameObject:
   - component: {fileID: 1782738873}
   - component: {fileID: 1782738872}
   - component: {fileID: 1782738871}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (250)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179364,7 +179396,7 @@ GameObject:
   - component: {fileID: 1796920825}
   - component: {fileID: 1796920824}
   - component: {fileID: 1796920823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179925,7 +179957,7 @@ GameObject:
   - component: {fileID: 1802139640}
   - component: {fileID: 1802139639}
   - component: {fileID: 1802139638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180633,7 +180665,7 @@ GameObject:
   - component: {fileID: 1812253534}
   - component: {fileID: 1812253533}
   - component: {fileID: 1812253532}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (228)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181515,7 +181547,7 @@ GameObject:
   - component: {fileID: 1814816188}
   - component: {fileID: 1814816187}
   - component: {fileID: 1814816186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (106)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182121,7 +182153,7 @@ GameObject:
   - component: {fileID: 1817555238}
   - component: {fileID: 1817555237}
   - component: {fileID: 1817555236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183185,7 +183217,7 @@ GameObject:
   - component: {fileID: 1828448235}
   - component: {fileID: 1828448234}
   - component: {fileID: 1828448233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (114)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183918,7 +183950,7 @@ GameObject:
   - component: {fileID: 1834232002}
   - component: {fileID: 1834232001}
   - component: {fileID: 1834232000}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (186)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185758,7 +185790,7 @@ GameObject:
   - component: {fileID: 1843271682}
   - component: {fileID: 1843271681}
   - component: {fileID: 1843271680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (152)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186644,7 +186676,7 @@ GameObject:
   - component: {fileID: 1852382767}
   - component: {fileID: 1852382766}
   - component: {fileID: 1852382765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (244)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186996,7 +187028,7 @@ GameObject:
   - component: {fileID: 1852562878}
   - component: {fileID: 1852562877}
   - component: {fileID: 1852562876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187348,7 +187380,7 @@ GameObject:
   - component: {fileID: 1854578635}
   - component: {fileID: 1854578634}
   - component: {fileID: 1854578633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188408,7 +188440,7 @@ GameObject:
   - component: {fileID: 1860470239}
   - component: {fileID: 1860470238}
   - component: {fileID: 1860470237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (115)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190734,7 +190766,7 @@ GameObject:
   - component: {fileID: 1895145995}
   - component: {fileID: 1895145994}
   - component: {fileID: 1895145993}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (212)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191620,7 +191652,7 @@ GameObject:
   - component: {fileID: 1900572855}
   - component: {fileID: 1900572854}
   - component: {fileID: 1900572853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (254)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191972,7 +192004,7 @@ GameObject:
   - component: {fileID: 1901950318}
   - component: {fileID: 1901950317}
   - component: {fileID: 1901950316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192680,7 +192712,7 @@ GameObject:
   - component: {fileID: 1903670362}
   - component: {fileID: 1903670361}
   - component: {fileID: 1903670360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (95)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195483,7 +195515,7 @@ GameObject:
   - component: {fileID: 1915552763}
   - component: {fileID: 1915552762}
   - component: {fileID: 1915552761}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (238)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196648,7 +196680,7 @@ GameObject:
   - component: {fileID: 1929122863}
   - component: {fileID: 1929122862}
   - component: {fileID: 1929122861}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198919,7 +198951,7 @@ GameObject:
   - component: {fileID: 1947095991}
   - component: {fileID: 1947095990}
   - component: {fileID: 1947095989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199271,7 +199303,7 @@ GameObject:
   - component: {fileID: 1951989472}
   - component: {fileID: 1951989471}
   - component: {fileID: 1951989470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (171)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199623,7 +199655,7 @@ GameObject:
   - component: {fileID: 1952107677}
   - component: {fileID: 1952107676}
   - component: {fileID: 1952107675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200051,7 +200083,7 @@ GameObject:
   - component: {fileID: 1953908007}
   - component: {fileID: 1953908006}
   - component: {fileID: 1953908005}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (159)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201589,7 +201621,7 @@ GameObject:
   - component: {fileID: 1965537828}
   - component: {fileID: 1965537827}
   - component: {fileID: 1965537826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (224)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202475,7 +202507,7 @@ GameObject:
   - component: {fileID: 1972212698}
   - component: {fileID: 1972212697}
   - component: {fileID: 1972212696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (209)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203005,7 +203037,7 @@ GameObject:
   - component: {fileID: 1974398470}
   - component: {fileID: 1974398469}
   - component: {fileID: 1974398468}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (103)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203709,7 +203741,7 @@ GameObject:
   - component: {fileID: 1975712419}
   - component: {fileID: 1975712418}
   - component: {fileID: 1975712417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204769,7 +204801,7 @@ GameObject:
   - component: {fileID: 1982409113}
   - component: {fileID: 1982409112}
   - component: {fileID: 1982409111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206181,7 +206213,7 @@ GameObject:
   - component: {fileID: 2000085379}
   - component: {fileID: 2000085378}
   - component: {fileID: 2000085377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (217)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206889,7 +206921,7 @@ GameObject:
   - component: {fileID: 2005269164}
   - component: {fileID: 2005269163}
   - component: {fileID: 2005269162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (139)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207495,7 +207527,7 @@ GameObject:
   - component: {fileID: 2014392404}
   - component: {fileID: 2014392403}
   - component: {fileID: 2014392402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209374,7 +209406,7 @@ GameObject:
   - component: {fileID: 2032186068}
   - component: {fileID: 2032186067}
   - component: {fileID: 2032186066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (102)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209904,7 +209936,7 @@ GameObject:
   - component: {fileID: 2035058518}
   - component: {fileID: 2035058517}
   - component: {fileID: 2035058516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210332,7 +210364,7 @@ GameObject:
   - component: {fileID: 2035234337}
   - component: {fileID: 2035234336}
   - component: {fileID: 2035234335}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210684,7 +210716,7 @@ GameObject:
   - component: {fileID: 2039465396}
   - component: {fileID: 2039465395}
   - component: {fileID: 2039465394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (164)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211468,7 +211500,7 @@ GameObject:
   - component: {fileID: 2043935380}
   - component: {fileID: 2043935379}
   - component: {fileID: 2043935378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (232)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212354,7 +212386,7 @@ GameObject:
   - component: {fileID: 2053651851}
   - component: {fileID: 2053651850}
   - component: {fileID: 2053651849}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (229)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213265,7 +213297,7 @@ GameObject:
   - component: {fileID: 2064564991}
   - component: {fileID: 2064564990}
   - component: {fileID: 2064564989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (243)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214879,7 +214911,7 @@ GameObject:
   - component: {fileID: 2071850612}
   - component: {fileID: 2071850611}
   - component: {fileID: 2071850610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (156)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216808,7 +216840,7 @@ GameObject:
   - component: {fileID: 2095615500}
   - component: {fileID: 2095615499}
   - component: {fileID: 2095615498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (126)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218122,7 +218154,7 @@ GameObject:
   - component: {fileID: 2112962747}
   - component: {fileID: 2112962746}
   - component: {fileID: 2112962745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (110)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219929,7 +219961,7 @@ GameObject:
   - component: {fileID: 2127987594}
   - component: {fileID: 2127987593}
   - component: {fileID: 2127987592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PolyShape (259)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
