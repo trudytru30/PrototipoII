@@ -43,8 +43,10 @@ GameObject:
   - component: {fileID: 5353118579198851306}
   - component: {fileID: 6365954224331375529}
   - component: {fileID: 3347975801239415968}
+  - component: {fileID: 5429582447112324443}
   - component: {fileID: 3062678089558263259}
   - component: {fileID: 1674102699738275889}
+  - component: {fileID: 7436364601973020181}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -87,8 +89,10 @@ MonoBehaviour:
   - {fileID: 0}
   stopTime: 3
   speed: 3.5
-  vision: {fileID: 0}
-  shooter: {fileID: 0}
+  maxTargetAngle: 40
+  rotationSpeed: 50
+  vision: {fileID: 5429582447112324443}
+  shooter: {fileID: 1674102699738275889}
 --- !u!114 &6365954224331375529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +119,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
+  globalVolume: {fileID: 0}
+  maxVignetteIntensity: 0.5
+  isPlayer: 0
+  meshRenderer: {fileID: 513836687077664167}
+--- !u!114 &5429582447112324443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717760097881652689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9413499843ef464eb94fc4f2d7f0c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisionSource
+  visionRange: 12
+  visionAngle: 60
+  player: {fileID: 1586943364475121118}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3062678089558263259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +178,28 @@ MonoBehaviour:
   fireDuration: 0.1
   aimAtChest: 1
   chestHeight: 1.2
+--- !u!195 &7436364601973020181
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717760097881652689}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6823694894055912572
 GameObject:
   m_ObjectHideFlags: 0

@@ -162,7 +162,7 @@ public class PlayerShooter : MonoBehaviour
         
         if (result.hit)
         {
-            Debug.Log(result.hitInfo.collider.gameObject.name);
+            Debug.Log("Result:" + result.hitInfo.collider.gameObject.name);
             if (result.hitInfo.collider.name == "EnemyModel") //Mira si el gameobject tiene el EnemyModel
             {
                 //audio
@@ -174,8 +174,8 @@ public class PlayerShooter : MonoBehaviour
             
                 var rotation = Quaternion.LookRotation(-direction, Vector3.up);
                 
-                //if (VFXManager.Instance)
-                    //VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
+                if (VFXManager.Instance)
+                    VFXManager.Instance.PlayVFXPrefab("blood", result.hitInfo.point, direction, rotation);
             }
             else
             {
@@ -183,6 +183,8 @@ public class PlayerShooter : MonoBehaviour
                     AudioManager.Instance.Play("hitWall");
             }
         }
+        
+        
 
         //cfx
         

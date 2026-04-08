@@ -168,7 +168,7 @@ public class FogManager : MonoBehaviour
     // Revela una linea de celdas
     private void CastVisionRay(Vector3 origin, Vector3 direction, float radius)
     {
-        Vector3 start = origin + Vector3.up * 1.5f;
+        Vector3 start = origin + Vector3.up * 1.05f;
 
         RaycastHit hit;
         Debug.DrawRay(start, direction * radius, Color.red);
@@ -246,7 +246,7 @@ public class FogManager : MonoBehaviour
                 {
                     Vector3 pos = GridToWorld(new Vector2Int(x, y));
 
-                    pos.y += 2f; // levantar un poco
+                    pos.y += 1.6f; // levantar un poco
 
                     Gizmos.color = new Color(0, 1, 0, 0.5f);
                     Gizmos.DrawCube(pos, Vector3.one * cellSize);
