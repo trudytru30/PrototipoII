@@ -162,7 +162,7 @@ public class PlayerShooter : MonoBehaviour
         
         if (result.hit)
         {
-            Debug.Log(result.hitInfo.collider.gameObject.name);
+            Debug.Log("Result:" + result.hitInfo.collider.gameObject.name);
             if (result.hitInfo.collider.name == "EnemyModel") //Mira si el gameobject tiene el EnemyModel
             {
                 //audio
