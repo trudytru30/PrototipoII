@@ -69,6 +69,20 @@ public class Movement : MonoBehaviour
         
         navMeshAgent.SetDestination(destination);
     }
+    
+    // AÑADIDO: devuelve la velocidad correspondiente a un tipo de movimiento sin modificar el NavMeshAgent
+    // Se necesita en PlayerController para calcular la duración del bloque en la timeline
+    // antes de ejecutar el movimiento, ya que MoveToPoint asigna la velocidad internamente
+    public float GetSpeedForType(MovementType type)
+    {
+        return type switch
+        {
+            MovementType.Crouch => crouchSpeed,
+            MovementType.Walk   => walkSpeed,
+            MovementType.Run    => runSpeed,
+            _                   => walkSpeed
+        };
+    }
 
     // Comprobar si el agente ha llegado al destino
     public bool HasReachedDestination()

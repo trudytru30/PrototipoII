@@ -20,24 +20,25 @@ public class TimelineController : MonoBehaviour
 
     public void PauseTimeline()
     {
-        if (director == null || IsPaused)
-            return;
+        if (director == null || IsPaused) return;
 
         IsPaused = true;
-        Time.timeScale = 0f;
+        // MODIFICADO: eliminado Time.timeScale = 0f
+        // En tiempo real congelar timeScale bloquea NavMesh, animaciones y físicas
         director.Pause();
     }
 
     public void ResumeTimeline()
     {
-        if (director == null || !IsPaused)
-            return;
+        if (director == null || !IsPaused) return;
 
         IsPaused = false;
-        Time.timeScale = 1f;
+        // MODIFICADO: eliminado Time.timeScale = 1f por el mismo motivo
         director.Resume();
     }
 
+    // MODIFICADO: OnDisable mantiene Time.timeScale = 1f como seguridad
+    // por si quedara en 0 de alguna versión anterior
     private void OnDisable()
     {
         Time.timeScale = 1f;

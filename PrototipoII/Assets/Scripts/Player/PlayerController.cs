@@ -5,8 +5,11 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
 {
     [SerializeField] private Camera cam;
     [SerializeField] private Movement movement;
-    
     [SerializeField] private PlayerShooter shooter;
+    
+    // AÑADIDO: referencia a TimelineActions para consultar la timeline antes de ejecutar acciones
+    [SerializeField] private TimelineActions timelineActions;
+    [SerializeField] private float shootDuration = 0.5f; // duración fija de un disparo en segundos
     
     private ActionController actionController;
     private PlayerActions inputs;
@@ -69,6 +72,21 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
 
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
         
+        // AÑADIDO: calcular distancia y velocidad para construir el bloque de timeline
+        // Se hace antes de ejecutar el movimiento para poder rechazarlo si hay solapamiento
+        float distance = Vector3.Distance(transform.position, hit.point);
+        float speed = movement.GetSpeedForType(type);
+ 
+        if (timelineActions != null)
+        {
+            // AÑADIDO: consultar la timeline; si rechaza la acción se aborta el movimiento
+            if (!timelineActions.TryQueueMove(distance, speed, out string reason))
+            {
+                Debug.LogWarning($"[Timeline] Movimiento rechazado: {reason}");
+                return;
+            }
+        }
+        
         switch (type)
         {
             case MovementType.Crouch:
@@ -101,17 +119,39 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
 
         if (context.started)
         {
+            // AÑADIDO: comprobar que el upper body está libre antes de continuar
+            if (!actionController.CanUseUpperBody()) return;
+ 
+            if (timelineActions != null)
+            {
+                // AÑADIDO: consultar la timeline; si rechaza la acción se aborta el disparo
+                if (!timelineActions.TryQueueShoot(shootDuration, out string reason))
+                {
+                    Debug.LogWarning($"[Timeline] Disparo rechazado: {reason}");
+                    return;
+                }
+            }
+ 
+            // AÑADIDO: marcar el upper body como ocupado una vez aceptado por la timeline
+            actionController.SetUpperBodyState(UpperBodyState.Aiming);
+            
             shooter.StartAim();
             Debug.Log("Aim");
         }
 
         if (context.performed)
         {
+            // AÑADIDO: actualizar el estado al estado de disparo efectivo
+            actionController.SetUpperBodyState(UpperBodyState.Shooting);
+            
             shooter.Shoot();
         }
 
         if (context.canceled)
         {
+            // AÑADIDO: liberar el upper body al soltar el botón de apuntar
+            actionController.SetUpperBodyState(UpperBodyState.None);
+            
             shooter.StopAim();
             Debug.Log("Aim Cancel");
             

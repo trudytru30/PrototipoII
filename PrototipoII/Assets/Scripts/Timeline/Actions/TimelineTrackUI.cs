@@ -19,20 +19,27 @@ public class TimelineTrackUI : MonoBehaviour
         if (blockRect == null || image == null)
             return;
 
+        // AÑADIDO: fallback por si el layout de Canvas aún no se ha calculado en este frame
+        // rect.width puede ser 0 si CreateBlock se llama en el mismo frame que el Awake del canvas
         float trackWidth = trackRect.rect.width;
+        if (trackWidth <= 0f)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(trackRect);
+            trackWidth = trackRect.rect.width;
+        }
 
-        float normalizedStart = Mathf.Clamp01(actionData.startTime / totalTimelineDuration);
-        float normalizedDuration = Mathf.Clamp01(actionData.duration / totalTimelineDuration);
+        float normalizedStart    = Mathf.Clamp01(actionData.startTime / totalTimelineDuration);
+        float normalizedDuration = Mathf.Clamp01(actionData.duration  / totalTimelineDuration);
 
-        float x = normalizedStart * trackWidth;
+        float x     = normalizedStart * trackWidth;
         float width = Mathf.Max(4f, normalizedDuration * trackWidth);
 
         blockRect.anchorMin = new Vector2(0f, 0.5f);
         blockRect.anchorMax = new Vector2(0f, 0.5f);
-        blockRect.pivot = new Vector2(0f, 0.5f);
+        blockRect.pivot     = new Vector2(0f, 0.5f);
 
         blockRect.anchoredPosition = new Vector2(x, 0f);
-        blockRect.sizeDelta = new Vector2(width, blockHeight);
+        blockRect.sizeDelta        = new Vector2(width, blockHeight);
 
         image.color = actionData.color;
     }

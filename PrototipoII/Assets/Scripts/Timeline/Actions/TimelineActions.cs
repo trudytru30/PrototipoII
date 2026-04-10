@@ -1,4 +1,4 @@
-    using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -9,9 +9,36 @@ public class TimelineActions : MonoBehaviour
     [SerializeField] private TimelineTrackUI moveTrackUI;
     [SerializeField] private TimelineTrackUI shootTrackUI;
 
+    [Header("Colors")]
+    // AÑADIDO: colores configurables desde el Inspector en lugar de hardcodeados
+    [SerializeField] private Color moveColor = Color.blue;
+    [SerializeField] private Color shootColor = Color.red;
+
     private readonly List<TimelineActionData> registeredActions = new();
 
-    public bool TryQueueAction(TimelineActionType type, float duration, Color color, out string failReason)
+    // AÑADIDO: punto de entrada público para movimiento
+    // Recibe distancia y velocidad y calcula la duración internamente
+    // Antes TryQueueAction recibía duración ya calculada y era llamado directamente desde fuera
+    public bool TryQueueMove(float distance, float speed, out string failReason)
+    {
+        if (speed <= 0f)
+        {
+            failReason = "Velocidad inválida.";
+            return false;
+        }
+
+        float duration = distance / speed;
+        return TryQueueAction(TimelineActionType.Move, duration, moveColor, out failReason);
+    }
+
+    // AÑADIDO: punto de entrada público para disparo
+    // Recibe duración fija y delega en TryQueueAction
+    public bool TryQueueShoot(float duration, out string failReason)
+    {
+        return TryQueueAction(TimelineActionType.Shoot, duration, shootColor, out failReason);
+    }
+
+    private bool TryQueueAction(TimelineActionType type, float duration, Color color, out string failReason)
     {
         failReason = string.Empty;
 
@@ -23,7 +50,7 @@ public class TimelineActions : MonoBehaviour
 
         if (duration <= 0f)
         {
-            failReason = "La duración de la acción no es válida.";
+            failReason = "Duración inválida.";
             return false;
         }
 
@@ -32,21 +59,20 @@ public class TimelineActions : MonoBehaviour
         TimelineActionData newAction = new TimelineActionData
         {
             actionType = type,
-            startTime = startTime,
-            duration = duration,
-            endTime = startTime + duration,
-            color = color
+            startTime  = startTime,
+            duration   = duration,
+            endTime    = startTime + duration,
+            color      = color
         };
 
         if (HasOverlap(newAction))
         {
-            failReason = "La acción no cabe en la timeline ahora mismo.";
+            failReason = $"Ya hay una acción de tipo {type} en ese tramo.";
             return false;
         }
 
         registeredActions.Add(newAction);
         CreateVisualBlock(newAction);
-
         return true;
     }
 
@@ -57,10 +83,7 @@ public class TimelineActions : MonoBehaviour
             if (current.actionType != candidate.actionType)
                 continue;
 
-            bool overlaps = candidate.startTime < current.endTime &&
-                            candidate.endTime > current.startTime;
-
-            if (overlaps)
+            if (candidate.startTime < current.endTime && candidate.endTime > current.startTime)
                 return true;
         }
 
@@ -74,13 +97,11 @@ public class TimelineActions : MonoBehaviour
         switch (action.actionType)
         {
             case TimelineActionType.Move:
-                if (moveTrackUI != null)
-                    moveTrackUI.CreateBlock(action, totalDuration);
+                moveTrackUI?.CreateBlock(action, totalDuration);
                 break;
 
             case TimelineActionType.Shoot:
-                if (shootTrackUI != null)
-                    shootTrackUI.CreateBlock(action, totalDuration);
+                shootTrackUI?.CreateBlock(action, totalDuration);
                 break;
         }
     }
