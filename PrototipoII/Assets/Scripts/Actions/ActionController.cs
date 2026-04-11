@@ -18,14 +18,14 @@ public class ActionController : MonoBehaviour
     {
         // MODIFICADO: añadida comprobación de fullBodyState == None
         // Antes no bloqueaba el upper body si había una acción de cuerpo completo en curso
-        return upperBodyState == UpperBodyState.None &&
+        return upperBodyState == UpperBodyState.None ||
                fullBodyState == FullBodyState.None;
     }
     
     public bool CanUseFullBody()
     {
-        return lowerBodyState == LowerBodyState.Idle && 
-               upperBodyState == UpperBodyState.None && fullBodyState == FullBodyState.None;
+        return lowerBodyState == LowerBodyState.Idle || 
+               fullBodyState == FullBodyState.None;
     }
     
     // ===== Getters y Setters =====
