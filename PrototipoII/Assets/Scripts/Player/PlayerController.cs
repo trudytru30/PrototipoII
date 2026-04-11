@@ -71,22 +71,31 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-        
-        // AÑADIDO: calcular distancia y velocidad para construir el bloque de timeline
-        // Se hace antes de ejecutar el movimiento para poder rechazarlo si hay solapamiento
-        float distance = Vector3.Distance(transform.position, hit.point);
+
+        // MODIFICADO: distancia calculada con CalculatePathDistance en lugar de Vector3.Distance
+        // Vector3.Distance devuelve distancia en línea recta, pero el NavMeshAgent
+        // sigue el path real que puede ser más largo si hay obstáculos en el NavMesh.
+        // CalculatePathDistance suma los corners del path sin mover al agente.
+        float distance = movement.CalculatePathDistance(hit.point);
         float speed = movement.GetSpeedForType(type);
- 
+
+        // Si el path no es válido (destino inaccesible) se aborta sin consultar la timeline
+        if (distance < 0f)
+        {
+            Debug.LogWarning("[Timeline] Destino inaccesible en el NavMesh.");
+            return;
+        }
+
         if (timelineActions != null)
         {
-            // AÑADIDO: consultar la timeline; si rechaza la acción se aborta el movimiento
+            // consultar la timeline; si rechaza la acción se aborta el movimiento
             if (!timelineActions.TryQueueMove(distance, speed, out string reason))
             {
                 Debug.LogWarning($"[Timeline] Movimiento rechazado: {reason}");
                 return;
             }
         }
-        
+
         switch (type)
         {
             case MovementType.Crouch:

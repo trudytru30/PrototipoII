@@ -69,7 +69,30 @@ public class Movement : MonoBehaviour
         
         navMeshAgent.SetDestination(destination);
     }
-    
+
+    // AÑADIDO: calcula la distancia real del path del NavMesh hasta el destino
+    // sin mover al agente ni modificar su estado actual.
+    // Suma la longitud entre cada corner del path calculado.
+    // Devuelve -1 si el NavMesh no puede calcular un path válido hasta ese punto.
+    public float CalculatePathDistance(Vector3 destination)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (!navMeshAgent.CalculatePath(destination, path))
+            return -1f;
+
+        if (path.status != NavMeshPathStatus.PathComplete)
+            return -1f;
+
+        Vector3[] corners = path.corners;
+        float distance = 0f;
+
+        for (int i = 0; i < corners.Length - 1; i++)
+            distance += Vector3.Distance(corners[i], corners[i + 1]);
+
+        return distance;
+    }
+
     // AÑADIDO: devuelve la velocidad correspondiente a un tipo de movimiento sin modificar el NavMeshAgent
     // Se necesita en PlayerController para calcular la duración del bloque en la timeline
     // antes de ejecutar el movimiento, ya que MoveToPoint asigna la velocidad internamente
