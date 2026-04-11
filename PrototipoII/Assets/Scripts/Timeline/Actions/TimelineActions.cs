@@ -1,24 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class TimelineActions : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayableDirector director;
+    [SerializeField] private TimelineClock clock;
     [SerializeField] private TimelineTrackUI moveTrackUI;
     [SerializeField] private TimelineTrackUI shootTrackUI;
 
     [Header("Colors")]
-    // AÑADIDO: colores configurables desde el Inspector en lugar de hardcodeados
     [SerializeField] private Color moveColor = Color.blue;
     [SerializeField] private Color shootColor = Color.red;
 
     private readonly List<TimelineActionData> registeredActions = new();
 
-    // AÑADIDO: punto de entrada público para movimiento
-    // Recibe distancia y velocidad y calcula la duración internamente
-    // Antes TryQueueAction recibía duración ya calculada y era llamado directamente desde fuera
     public bool TryQueueMove(float distance, float speed, out string failReason)
     {
         if (speed <= 0f)
@@ -31,8 +26,6 @@ public class TimelineActions : MonoBehaviour
         return TryQueueAction(TimelineActionType.Move, duration, moveColor, out failReason);
     }
 
-    // AÑADIDO: punto de entrada público para disparo
-    // Recibe duración fija y delega en TryQueueAction
     public bool TryQueueShoot(float duration, out string failReason)
     {
         return TryQueueAction(TimelineActionType.Shoot, duration, shootColor, out failReason);
@@ -42,9 +35,9 @@ public class TimelineActions : MonoBehaviour
     {
         failReason = string.Empty;
 
-        if (director == null)
+        if (clock == null)
         {
-            failReason = "No hay PlayableDirector asignado.";
+            failReason = "No hay TimelineClock asignado.";
             return false;
         }
 
@@ -54,7 +47,7 @@ public class TimelineActions : MonoBehaviour
             return false;
         }
 
-        float startTime = (float)director.time;
+        float startTime = clock.CurrentTime;
 
         TimelineActionData newAction = new TimelineActionData
         {
@@ -92,7 +85,7 @@ public class TimelineActions : MonoBehaviour
 
     private void CreateVisualBlock(TimelineActionData action)
     {
-        float totalDuration = (float)director.duration;
+        float totalDuration = clock.TotalDuration;
 
         switch (action.actionType)
         {
