@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     // Consultar si el personaje esta en movimiento
     private void Update()
     {
-        if (actionController.GetLowerBodyState() != LowerBodyState.Idle && movement.IsStopped())
+        if (actionController.GetLowerBodyState() != LowerBodyState.Idle && movement.HasReachedDestination())
         {
             actionController.SetLowerBodyState(LowerBodyState.Idle);
         }
