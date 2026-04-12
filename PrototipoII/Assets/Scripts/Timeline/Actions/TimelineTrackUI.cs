@@ -5,8 +5,21 @@ public class TimelineTrackUI : MonoBehaviour
 {
     [SerializeField] private RectTransform trackRect;
     [SerializeField] private RectTransform blockContainer;
+    [SerializeField] private TimelineMovement referenceMovement;
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private float blockHeight = 18f;
+
+    private void Awake()
+    {
+        if (blockContainer != null && referenceMovement != null)
+        {
+            TimelineMovement movement = blockContainer.GetComponent<TimelineMovement>();
+            if (movement == null)
+                movement = blockContainer.gameObject.AddComponent<TimelineMovement>();
+
+            movement.SetSpeed(referenceMovement.Speed);
+        }
+    }
 
     public void CreateBlock(TimelineActionData actionData, float totalTimelineDuration)
     {
