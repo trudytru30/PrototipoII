@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     public void OnMove(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (Time.timeScale <= 0f) return;
         if (!actionController.CanUseLowerBody()) return;
         
         bool slowWalk = Keyboard.current[Key.LeftShift].isPressed;
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     public void OnRun(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (Time.timeScale <= 0f) return;
         if (!actionController.CanUseLowerBody()) return;
         
         MovePlayer(MovementType.Run);
@@ -119,12 +121,15 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
         // Limpiar la lista de destinos de movimiento y hacer que el player se quede quieto
         movement.StopMoving();
         actionController.SetLowerBodyState(LowerBodyState.Idle);
+        // Eliminar la accion de movimiento pendiente en la timeline para que se pueda volver a mover
+        timelineActions?.CancelLastAction(TimelineActionType.Move);
     }
     
     // Accion de apuntar
     public void OnAim(InputAction.CallbackContext context)
     {
         if (shooter == null) return;
+        if (Time.timeScale <= 0f) return;
 
         if (context.started)
         {

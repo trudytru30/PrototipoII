@@ -69,6 +69,18 @@ public class TimelineActions : MonoBehaviour
         return true;
     }
 
+    public void CancelLastAction(TimelineActionType type)
+    {
+        for (int i = registeredActions.Count - 1; i >= 0; i--)
+        {
+            if (registeredActions[i].actionType == type)
+            {
+                registeredActions.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
     private bool HasOverlap(TimelineActionData candidate)
     {
         foreach (TimelineActionData current in registeredActions)
