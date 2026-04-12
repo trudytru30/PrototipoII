@@ -9,17 +9,6 @@ public class TimelineTrackUI : MonoBehaviour
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private float blockHeight = 18f;
 
-    private void Awake()
-    {
-        if (blockContainer != null && referenceMovement != null)
-        {
-            TimelineMovement movement = blockContainer.GetComponent<TimelineMovement>();
-            if (movement == null)
-                movement = blockContainer.gameObject.AddComponent<TimelineMovement>();
-
-            movement.SetSpeed(referenceMovement.Speed);
-        }
-    }
 
     public void CreateBlock(TimelineActionData actionData, float totalTimelineDuration)
     {
@@ -57,5 +46,8 @@ public class TimelineTrackUI : MonoBehaviour
         blockRect.sizeDelta        = new Vector2(width, blockHeight);
 
         image.color = actionData.color;
+
+        if (referenceMovement != null)
+            block.AddComponent<TimelineMovement>().SetSpeed(referenceMovement.Speed);
     }
 }
