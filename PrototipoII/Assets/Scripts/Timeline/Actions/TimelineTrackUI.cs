@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class TimelineTrackUI : MonoBehaviour
 {
     [SerializeField] private RectTransform trackRect;
+    [SerializeField] private RectTransform blockContainer;
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private float blockHeight = 18f;
 
@@ -12,7 +13,8 @@ public class TimelineTrackUI : MonoBehaviour
         if (trackRect == null || blockPrefab == null || totalTimelineDuration <= 0f)
             return;
 
-        GameObject block = Instantiate(blockPrefab, trackRect);
+        RectTransform parent = blockContainer != null ? blockContainer : trackRect;
+        GameObject block = Instantiate(blockPrefab, parent);
         RectTransform blockRect = block.GetComponent<RectTransform>();
         Image image = block.GetComponent<Image>();
 
