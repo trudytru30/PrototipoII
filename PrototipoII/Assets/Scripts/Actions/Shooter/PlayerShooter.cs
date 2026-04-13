@@ -149,11 +149,11 @@ public class PlayerShooter : MonoBehaviour
 
         if (VFXManager.Instance)
             VFXManager.Instance.CallGlitchFX(
-              0.4f,
-               0.1f,
-            0.4f,
-                 0.4f,
-            0.2f,
+              0.1f,
+               0.07f,
+            0.07f,
+                 0.1f,
+            0.08f,
                true);
         
         
