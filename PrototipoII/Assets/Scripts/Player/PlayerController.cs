@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     {
         if (!context.performed) return;
         if (Time.timeScale <= 0f) return;
-        if (!actionController.CanUseLowerBody()) return;
+        if (actionController.GetFullBodyState() != FullBodyState.None) return;
         
         bool slowWalk = Keyboard.current[Key.LeftShift].isPressed;
         
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     {
         if (!context.performed) return;
         if (Time.timeScale <= 0f) return;
-        if (!actionController.CanUseLowerBody()) return;
+        if (actionController.GetFullBodyState() != FullBodyState.None) return;
         
         MovePlayer(MovementType.Run);
         
@@ -70,6 +70,13 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     // Movimiento
     public void MovePlayer(MovementType type)
     {
+        // Si ya está moviéndose, cancelar el movimiento actual y redirigir al nuevo destino
+        if (actionController.GetLowerBodyState() != LowerBodyState.Idle)
+        {
+            timelineActions?.CancelLastAction(TimelineActionType.Move);
+            actionController.SetLowerBodyState(LowerBodyState.Idle);
+        }
+
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
