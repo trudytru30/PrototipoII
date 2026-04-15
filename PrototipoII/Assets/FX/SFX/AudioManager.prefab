@@ -132,6 +132,65 @@ MonoBehaviour:
       hasRandomVolume: 0
       randomPitchRange: {x: 0, y: 0}
       randomVolumeRange: {x: 0, y: 0}
+  - typeConfig:
+      id: hitWall
+      debugColor: {r: 0.5345911, g: 0.5345911, b: 0.5345911, a: 0}
+    _source: {fileID: 5799460259996286732}
+    _library:
+      clips:
+      - {fileID: 8300000, guid: 9e9ef263580a83c49826289c7f0c8f87, type: 3}
+      - {fileID: 8300000, guid: 410b6ad54f6d71a41913ec3ddeaa7615, type: 3}
+      - {fileID: 8300000, guid: 5b26463ebb5673d4a9b16883a7e183e5, type: 3}
+      - {fileID: 8300000, guid: d7b05f02852db3443a2e2d26e0fa89cb, type: 3}
+      volume: 0.805
+      pitch: 1
+      hasRandomPitch: 0
+      hasRandomVolume: 0
+      randomPitchRange: {x: 0, y: 0}
+      randomVolumeRange: {x: 0, y: 0}
+  - typeConfig:
+      id: pause
+      debugColor: {r: 0.5345911, g: 0.5345911, b: 0.5345911, a: 0}
+    _source: {fileID: 5799460259996286732}
+    _library:
+      clips:
+      - {fileID: 8300000, guid: e73783becd6cb47459e63dfdecb78215, type: 3}
+      volume: 0.805
+      pitch: 1
+      hasRandomPitch: 0
+      hasRandomVolume: 0
+      randomPitchRange: {x: 0, y: 0}
+      randomVolumeRange: {x: 0, y: 0}
+  - typeConfig:
+      id: resume
+      debugColor: {r: 0.5345911, g: 0.5345911, b: 0.5345911, a: 0}
+    _source: {fileID: 5799460259996286732}
+    _library:
+      clips:
+      - {fileID: 8300000, guid: b3eafae69bfe14c4380924269d6ae5f8, type: 3}
+      volume: 0.805
+      pitch: 1
+      hasRandomPitch: 0
+      hasRandomVolume: 0
+      randomPitchRange: {x: 0, y: 0}
+      randomVolumeRange: {x: 0, y: 0}
+  - typeConfig:
+      id: hud_button
+      debugColor: {r: 0.5345911, g: 0.5345911, b: 0.5345911, a: 0}
+    _source: {fileID: 5799460259996286732}
+    _library:
+      clips:
+      - {fileID: 8300000, guid: daf17fd985843704e99cdccb8b287cce, type: 3}
+      - {fileID: 8300000, guid: d772137aa6f8ff8489582f2341c6df79, type: 3}
+      - {fileID: 8300000, guid: 3834496dfc39b98448b90331830fc25e, type: 3}
+      - {fileID: 8300000, guid: 10d09500b385ff74a841af07245f4bef, type: 3}
+      - {fileID: 8300000, guid: 80ff27777ecb3024da012a1efb06c703, type: 3}
+      volume: 0.805
+      pitch: 1
+      hasRandomPitch: 0
+      hasRandomVolume: 0
+      randomPitchRange: {x: 0, y: 0}
+      randomVolumeRange: {x: 0, y: 0}
 --- !u!82 &726618017745064863
 AudioSource:
   m_ObjectHideFlags: 0

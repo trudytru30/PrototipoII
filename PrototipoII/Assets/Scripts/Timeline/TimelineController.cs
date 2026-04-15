@@ -32,9 +32,22 @@ public class TimelineController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (IsPaused)
+            {
+                if (AudioManager.Instance)
+                {
+                    AudioManager.Instance.Play("hud_button");
+                }
                 ResumeTimeline();
+            }
             else
+            {
+                if (AudioManager.Instance)
+                {
+                    AudioManager.Instance.Play("hud_button");
+                }
                 PauseTimeline();
+            }
+
         }
         
         
@@ -70,6 +83,11 @@ public class TimelineController : MonoBehaviour
             Debug.Log("No hay tiempo de pausa disponible");
             return;
         }
+
+        if (AudioManager.Instance)
+        {
+            AudioManager.Instance.Play("pause");
+        }
         
         IsPaused = true;
         Time.timeScale = 0f;
@@ -79,6 +97,11 @@ public class TimelineController : MonoBehaviour
     public void ResumeTimeline()
     {
         if (!IsPaused) return;
+        
+        if (AudioManager.Instance)
+        {
+            AudioManager.Instance.Play("resume");
+        }
         
         IsPaused = false;
         Time.timeScale = 1f;
