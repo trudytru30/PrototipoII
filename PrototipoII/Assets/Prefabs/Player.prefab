@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 9175901325043613306}
   - component: {fileID: 5189113411072403748}
   - component: {fileID: 1108606433370880672}
-  - component: {fileID: 1430063023578193395}
+  - component: {fileID: 3635621247606643605}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -255,6 +255,8 @@ MonoBehaviour:
   cam: {fileID: 1072854799419063647}
   movement: {fileID: 1223114908642873590}
   shooter: {fileID: 8494432511737256393}
+  timelineActions: {fileID: 0}
+  shootDuration: 0.5
 --- !u!114 &4541904263582997895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +596,7 @@ MonoBehaviour:
   targetMarker: {fileID: 0}
   grenadeSlots: 010101
   selectedSlot: -1
---- !u!120 &1430063023578193395
+--- !u!120 &3635621247606643605
 LineRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
