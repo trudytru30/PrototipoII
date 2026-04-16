@@ -3,37 +3,39 @@ using UnityEngine.UI;
 
 public class TimelineTrackUI : MonoBehaviour
 {
-    [SerializeField] private RectTransform trackRect;
+    [SerializeField] private Transform blockContainer;
+    [SerializeField] private TimelineMovement referenceMovement;
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private float blockHeight = 18f;
+    [SerializeField] private float spawnX = 0f;
+    [SerializeField] private float spawnY = 0f;
 
     public void CreateBlock(TimelineActionData actionData, float totalTimelineDuration)
     {
-        if (trackRect == null || blockPrefab == null || totalTimelineDuration <= 0f)
+        if (blockPrefab == null)
             return;
 
-        GameObject block = Instantiate(blockPrefab, trackRect);
+        Transform parent = blockContainer != null ? blockContainer : this.transform;
+        GameObject block = Instantiate(blockPrefab, parent);
         RectTransform blockRect = block.GetComponent<RectTransform>();
         Image image = block.GetComponent<Image>();
 
         if (blockRect == null || image == null)
             return;
 
-        float trackWidth = trackRect.rect.width;
-
-        float normalizedStart = Mathf.Clamp01(actionData.startTime / totalTimelineDuration);
-        float normalizedDuration = Mathf.Clamp01(actionData.duration / totalTimelineDuration);
-
-        float x = normalizedStart * trackWidth;
-        float width = Mathf.Max(4f, normalizedDuration * trackWidth);
+        float speed = referenceMovement != null ? referenceMovement.Speed : 1f;
+        float width = Mathf.Max(4f, actionData.duration * speed);
 
         blockRect.anchorMin = new Vector2(0f, 0.5f);
         blockRect.anchorMax = new Vector2(0f, 0.5f);
-        blockRect.pivot = new Vector2(0f, 0.5f);
+        blockRect.pivot     = new Vector2(0f, 0.5f);
 
-        blockRect.anchoredPosition = new Vector2(x, 0f);
-        blockRect.sizeDelta = new Vector2(width, blockHeight);
+        blockRect.anchoredPosition = new Vector2(spawnX, spawnY);
+        blockRect.sizeDelta        = new Vector2(width, blockHeight);
 
         image.color = actionData.color;
+
+        if (referenceMovement != null)
+            block.AddComponent<TimelineMovement>().SetSpeed(speed);
     }
 }

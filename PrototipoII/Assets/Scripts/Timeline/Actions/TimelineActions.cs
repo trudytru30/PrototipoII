@@ -1,53 +1,84 @@
-    using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class TimelineActions : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayableDirector director;
+    [SerializeField] private TimelineClock clock;
     [SerializeField] private TimelineTrackUI moveTrackUI;
     [SerializeField] private TimelineTrackUI shootTrackUI;
 
+    [Header("Colors")]
+    [SerializeField] private Color moveColor = Color.blue;
+    [SerializeField] private Color shootColor = Color.red;
+
     private readonly List<TimelineActionData> registeredActions = new();
 
-    public bool TryQueueAction(TimelineActionType type, float duration, Color color, out string failReason)
+    public bool TryQueueMove(float distance, float speed, out string failReason)
+    {
+        if (speed <= 0f)
+        {
+            failReason = "Velocidad inválida.";
+            return false;
+        }
+
+        float duration = distance / speed;
+        return TryQueueAction(TimelineActionType.Move, duration, moveColor, out failReason);
+    }
+
+    public bool TryQueueShoot(float duration, out string failReason)
+    {
+        return TryQueueAction(TimelineActionType.Shoot, duration, shootColor, out failReason);
+    }
+
+    private bool TryQueueAction(TimelineActionType type, float duration, Color color, out string failReason)
     {
         failReason = string.Empty;
 
-        if (director == null)
+        if (clock == null)
         {
-            failReason = "No hay PlayableDirector asignado.";
+            failReason = "No hay TimelineClock asignado.";
             return false;
         }
 
         if (duration <= 0f)
         {
-            failReason = "La duración de la acción no es válida.";
+            failReason = "Duración inválida.";
             return false;
         }
 
-        float startTime = (float)director.time;
+        float startTime = clock.CurrentTime;
 
         TimelineActionData newAction = new TimelineActionData
         {
             actionType = type,
-            startTime = startTime,
-            duration = duration,
-            endTime = startTime + duration,
-            color = color
+            startTime  = startTime,
+            duration   = duration,
+            endTime    = startTime + duration,
+            color      = color
         };
 
         if (HasOverlap(newAction))
         {
-            failReason = "La acción no cabe en la timeline ahora mismo.";
+            failReason = $"Ya hay una acción de tipo {type} en ese tramo.";
             return false;
         }
 
         registeredActions.Add(newAction);
         CreateVisualBlock(newAction);
-
         return true;
+    }
+
+    public void CancelLastAction(TimelineActionType type)
+    {
+        for (int i = registeredActions.Count - 1; i >= 0; i--)
+        {
+            if (registeredActions[i].actionType == type)
+            {
+                registeredActions.RemoveAt(i);
+                return;
+            }
+        }
     }
 
     private bool HasOverlap(TimelineActionData candidate)
@@ -57,10 +88,7 @@ public class TimelineActions : MonoBehaviour
             if (current.actionType != candidate.actionType)
                 continue;
 
-            bool overlaps = candidate.startTime < current.endTime &&
-                            candidate.endTime > current.startTime;
-
-            if (overlaps)
+            if (candidate.startTime < current.endTime && candidate.endTime > current.startTime)
                 return true;
         }
 
@@ -69,18 +97,16 @@ public class TimelineActions : MonoBehaviour
 
     private void CreateVisualBlock(TimelineActionData action)
     {
-        float totalDuration = (float)director.duration;
+        float totalDuration = clock.TotalDuration;
 
         switch (action.actionType)
         {
             case TimelineActionType.Move:
-                if (moveTrackUI != null)
-                    moveTrackUI.CreateBlock(action, totalDuration);
+                moveTrackUI?.CreateBlock(action, totalDuration);
                 break;
 
             case TimelineActionType.Shoot:
-                if (shootTrackUI != null)
-                    shootTrackUI.CreateBlock(action, totalDuration);
+                shootTrackUI?.CreateBlock(action, totalDuration);
                 break;
         }
     }

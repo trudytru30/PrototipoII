@@ -8,18 +8,24 @@ public class ActionController : MonoBehaviour
 
     public bool CanUseLowerBody()
     {
-        return fullBodyState == FullBodyState.None;
+        // MODIFICADO: añadida comprobación de lowerBodyState == Idle
+        // Antes solo comprobaba fullBodyState, permitiendo encolar movimientos mientras el player ya se movía
+        return lowerBodyState == LowerBodyState.Idle &&
+               fullBodyState == FullBodyState.None;
     }
-    
+ 
     public bool CanUseUpperBody()
     {
-        return upperBodyState == UpperBodyState.None;
+        // MODIFICADO: añadida comprobación de fullBodyState == None
+        // Antes no bloqueaba el upper body si había una acción de cuerpo completo en curso
+        return upperBodyState == UpperBodyState.None &&
+               fullBodyState == FullBodyState.None;
     }
     
     public bool CanUseFullBody()
     {
-        return lowerBodyState == LowerBodyState.Idle && 
-               upperBodyState == UpperBodyState.None && fullBodyState == FullBodyState.None;
+        return lowerBodyState == LowerBodyState.Idle || 
+               fullBodyState == FullBodyState.None;
     }
     
     // ===== Getters y Setters =====

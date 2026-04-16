@@ -43,8 +43,7 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         UpdateAimPoint();
-        if (isAiming && actionController.GetLowerBodyState() == LowerBodyState.Idle)
-        //if (isAiming) //lo ideal pero el player se mueve solo en idle
+        if (isAiming)
         {
             RotateTowardsAimPoint();
         }
@@ -85,10 +84,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (actionController == null) return;
 
-        if (!actionController.CanUseUpperBody()) return;
-
         isAiming = true;
-        actionController.SetUpperBodyState(UpperBodyState.Aiming);
     }
 
     //Deja de apuntar
@@ -109,8 +105,9 @@ public class PlayerShooter : MonoBehaviour
     {
         if (actionController == null || weaponRaycast == null) return;
 
-        //solo si usa el cuerpo superior o si ya esta apuntando, puede disparar
-        bool canShoot = actionController.CanUseUpperBody() || actionController.GetUpperBodyState() == UpperBodyState.Aiming;
+        //solo si ya está apuntando o en estado de disparo puede disparar
+        bool canShoot = actionController.GetUpperBodyState() == UpperBodyState.Aiming
+                     || actionController.GetUpperBodyState() == UpperBodyState.Shooting;
 
         if (!canShoot) return;
 
@@ -152,11 +149,11 @@ public class PlayerShooter : MonoBehaviour
 
         if (VFXManager.Instance)
             VFXManager.Instance.CallGlitchFX(
-              0.4f,
-               0.1f,
-            0.4f,
-                 0.4f,
-            0.2f,
+              0.1f,
+               0.07f,
+            0.07f,
+                 0.1f,
+            0.08f,
                true);
         
         
