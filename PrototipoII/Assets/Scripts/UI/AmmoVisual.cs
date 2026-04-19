@@ -11,6 +11,7 @@ public class AmmoVisual : MonoBehaviour
 {
     [SerializeField] private Sprite ammoSprite;
     [SerializeField] private int ammoCount; // Replace later with actual player ammo count
+    [SerializeField] private int maxCount; // Replace later with actual player ammo count
 
     private List<AmmoImage> ammoImageList;
 
@@ -20,6 +21,11 @@ public class AmmoVisual : MonoBehaviour
     }
 
     private void Start()
+    {
+        AddAmmo();
+    }
+
+    private void AddAmmo()
     {
         int xPos = -850;   
         for (int i = 0; i < ammoCount; i++)
@@ -57,11 +63,39 @@ public class AmmoVisual : MonoBehaviour
     public class AmmoImage
     {
         private Image ammoImage;
+        private GameObject ammoObject;
 
         public AmmoImage(Image ammoImage)
         {
             this.ammoImage = ammoImage;
         }
+
+        public void SetVisible(bool isVisible)
+        {
+            ammoImage.enabled = isVisible;
+        }
+        
+    }
+
+    public void RemoveAmmo()
+    {
+        AmmoImage ammoImage = ammoImageList[ammoCount - 1];
+        ammoImage.SetVisible(false);
+       
+        ammoCount--;
+        
+        if (ammoCount <= 0)
+        {
+            ammoCount = maxCount;
+            
+            for (int i = ammoCount - 1; i >= 0; i--)
+            {
+                ammoImage = ammoImageList[i];
+                ammoImage.SetVisible(true);
+            }
+            
+        }
+
     }
 
 }

@@ -31,6 +31,7 @@ public class PlayerShooter : MonoBehaviour
     [Header("FX")]
     [SerializeField] private string sfxID;
     [SerializeField] private float fireDuration = 0.1f;
+    [SerializeField] private AmmoVisual ammoVis;
 
     
     [SerializeField] private TrailRenderer BulletTrail;
@@ -129,6 +130,7 @@ public class PlayerShooter : MonoBehaviour
         Vector3 aimHeightCorrection = currentAimPoint;
         aimHeightCorrection.y = muzzle.position.y;
         
+        ammoVis.RemoveAmmo(); // Removes piece from gun
         ShootResult result = weaponRaycast.Fire(muzzle, aimHeightCorrection, transform.root);
 
        /* Debug.DrawLine(

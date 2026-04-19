@@ -88141,6 +88141,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8494432511737256393, guid: 8ac1161bf51436141aa5751be1840a67, type: 3}
+      propertyPath: ammoVis
+      value: 
+      objectReference: {fileID: 1571263307}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -146821,6 +146825,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9054637478078109324, guid: 9aed3be70f4fe2144bbf396e3c158db8, type: 3}
+      propertyPath: maxCount
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -157869,6 +157877,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 245616173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1571263307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9054637478078109324, guid: 9aed3be70f4fe2144bbf396e3c158db8, type: 3}
+  m_PrefabInstance: {fileID: 1461996291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e0afff065b5ca4f85c194fcd11f836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!43 &1576896060
 Mesh:
   m_ObjectHideFlags: 0
