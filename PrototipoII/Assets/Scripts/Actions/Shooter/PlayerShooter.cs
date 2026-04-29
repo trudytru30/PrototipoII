@@ -101,45 +101,33 @@ public class PlayerShooter : MonoBehaviour
         }
     }
     
-    // Disparo
-    public void Shoot()
+    public void ShootAtTarget(Vector3 targetPoint)
     {
         if (actionController == null || weaponRaycast == null) return;
 
-        //solo si ya está apuntando o en estado de disparo puede disparar
-        bool canShoot = actionController.GetUpperBodyState() == UpperBodyState.Aiming
-                     || actionController.GetUpperBodyState() == UpperBodyState.Shooting;
+        if (shootingCoroutine != null) StopCoroutine(shootingCoroutine);
 
-        if (!canShoot) return;
-
-        if (shootingCoroutine != null)
-        {
-            StopCoroutine(shootingCoroutine);
-        }
-
-        shootingCoroutine = StartCoroutine(ShootRoutine());//inicia la rutina de disparo
+        shootingCoroutine = StartCoroutine(ShootRoutine(targetPoint));
     }
     
-    private IEnumerator ShootRoutine()
+    private IEnumerator ShootRoutine(Vector3 targetPoint)
     {
         isAiming = false;
         actionController.SetUpperBodyState(UpperBodyState.Shooting);
 
         Transform muzzle = weaponArm != null ? weaponArm : transform;
 
-        Vector3 aimHeightCorrection = currentAimPoint;
+        Vector3 aimHeightCorrection = targetPoint; 
         aimHeightCorrection.y = muzzle.position.y;
+        
+        Vector3 dir = (aimHeightCorrection - transform.position).normalized;
+        if (dir != Vector3.zero) transform.rotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         
         ammoVis.RemoveAmmo(); // Removes piece from gun
         ShootResult result = weaponRaycast.Fire(muzzle, aimHeightCorrection, transform.root);
-
-       /* Debug.DrawLine(
-            muzzle.position,
-            result.finalPoint,
-            result.hit ? Color.red : Color.yellow,
-            1f
-        );
-        */
+        
+        
+        
         Debug.DrawRay(muzzle.position, result.finalDirection * weaponRaycast.GetRange(), Color.green, 1f);
         //TODO: efectos visuales
         //-sonido de disparo
@@ -202,10 +190,8 @@ public class PlayerShooter : MonoBehaviour
         StartCoroutine(SpawnTrail(trail, result.finalPoint));
 
         yield return new WaitForSeconds(fireDuration);
-
         actionController.SetUpperBodyState(UpperBodyState.None);
         shootingCoroutine = null;
-            
     }
     
 

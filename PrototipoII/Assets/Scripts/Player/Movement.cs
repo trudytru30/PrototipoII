@@ -157,6 +157,8 @@ public class Movement : MonoBehaviour
     {
         if (!showPath || pathLine == null) return;
 
+        if (Time.timeScale <= 0f) return;
+        
         if (navMeshAgent.pathPending || !navMeshAgent.hasPath || navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
             pathLine.positionCount = 0;
@@ -171,6 +173,26 @@ public class Movement : MonoBehaviour
             Vector3 point = corners[i];
             point.y += yOffset;
             pathLine.SetPosition(i, point);
+        }
+    }
+    
+    public void PreviewPath(Vector3 destination)
+    {
+        if (!showPath || pathLine == null) return;
+
+        NavMeshPath path = new NavMeshPath();
+        
+        if (navMeshAgent.CalculatePath(destination, path) && path.status == NavMeshPathStatus.PathComplete)
+        {
+            Vector3[] corners = path.corners;
+            pathLine.positionCount = corners.Length;
+
+            for (int i = 0; i < corners.Length; i++)
+            {
+                Vector3 point = corners[i];
+                point.y += yOffset;
+                pathLine.SetPosition(i, point);
+            }
         }
     }
 }

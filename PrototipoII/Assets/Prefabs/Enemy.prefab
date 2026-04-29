@@ -140,7 +140,7 @@ MonoBehaviour:
   player: {fileID: 1586943364475121118}
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!114 &3062678089558263259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   weaponArmE: {fileID: 160040264017656598}
   weaponRaycastEnemy: {fileID: 3062678089558263259}
-  fireCooldown: 0.5
-  fireDuration: 0.1
+  fireCooldown: 1
+  fireDuration: 0.5
   aimAtChest: 1
   chestHeight: 1.2
+  BulletTrail: {fileID: 328621789431213768, guid: 43559d27d223bf340b413fde1315c256, type: 3}
 --- !u!195 &7436364601973020181
 NavMeshAgent:
   m_ObjectHideFlags: 0

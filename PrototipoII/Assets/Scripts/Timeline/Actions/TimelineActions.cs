@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +12,12 @@ public class TimelineActions : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private Color moveColor = Color.blue;
     [SerializeField] private Color shootColor = Color.red;
+    
+    private Dictionary<TimelineActionType, Action> pendingExecutions = new();
 
     private readonly List<TimelineActionData> registeredActions = new();
-
-    public bool TryQueueMove(float distance, float speed, out string failReason)
+    
+    public bool TryQueueMove(float distance, float speed,Action onExecute , out string failReason)
     {
         if (speed <= 0f)
         {
@@ -23,15 +26,15 @@ public class TimelineActions : MonoBehaviour
         }
 
         float duration = distance / speed;
-        return TryQueueAction(TimelineActionType.Move, duration, moveColor, out failReason);
+        return TryQueueAction(TimelineActionType.Move, duration, moveColor,onExecute , out failReason);
     }
 
-    public bool TryQueueShoot(float duration, out string failReason)
+    public bool TryQueueShoot(float duration,Action onExecute , out string failReason)
     {
-        return TryQueueAction(TimelineActionType.Shoot, duration, shootColor, out failReason);
+        return TryQueueAction(TimelineActionType.Shoot, duration, shootColor,onExecute , out failReason);
     }
 
-    private bool TryQueueAction(TimelineActionType type, float duration, Color color, out string failReason)
+    private bool TryQueueAction(TimelineActionType type, float duration, Color color,Action onExecute ,out string failReason)
     {
         failReason = string.Empty;
 
@@ -66,7 +69,25 @@ public class TimelineActions : MonoBehaviour
 
         registeredActions.Add(newAction);
         CreateVisualBlock(newAction);
+        
+        if (onExecute != null)
+        {
+            pendingExecutions[type] = onExecute; 
+        }
+        
         return true;
+    }
+    
+    private void Update()
+    {
+        if (Time.timeScale > 0f && pendingExecutions.Count > 0)
+        {
+            foreach (var execution in pendingExecutions.Values)
+            {
+                execution?.Invoke();
+            }
+            pendingExecutions.Clear();
+        }
     }
 
     public void CancelLastAction(TimelineActionType type)
@@ -108,6 +129,14 @@ public class TimelineActions : MonoBehaviour
             case TimelineActionType.Shoot:
                 shootTrackUI?.CreateBlock(action, totalDuration);
                 break;
+        }
+    }
+    
+    public void ClearSpecificExecution(TimelineActionType type)
+    {
+        if (pendingExecutions.ContainsKey(type))
+        {
+            pendingExecutions.Remove(type);
         }
     }
 }

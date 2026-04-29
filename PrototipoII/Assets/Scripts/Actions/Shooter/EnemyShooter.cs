@@ -25,6 +25,9 @@ public class EnemyShooter : MonoBehaviour
     private bool canShoot = true;
     private Coroutine shootingCoroutine;//controla el tiempo de disparo
     
+    
+    [SerializeField] private TrailRenderer BulletTrail;
+    
     public void SetTarget(Transform target)
     {
         currentTarget = target;//player
@@ -51,6 +54,8 @@ public class EnemyShooter : MonoBehaviour
     private IEnumerator ShootRoutine()
     {
         canShoot = false;
+        
+        Transform muzzle = transform;
 
         //punto al que dispara (mejorar altura para no disparar a los pies)
         Vector3 targetPoint = currentTarget.position;
@@ -61,11 +66,7 @@ public class EnemyShooter : MonoBehaviour
         }
         targetPoint.y=weaponArmE.position.y;
         //
-        ShootResult result = weaponRaycastEnemy.Fire(
-            weaponArmE,
-            targetPoint,
-            transform.root
-        );
+        ShootResult result = weaponRaycastEnemy.Fire(weaponArmE, targetPoint, transform.root);
 
         //dibuja la line del disparo, cyan si impacta, azul si no
         Debug.DrawRay(
@@ -84,5 +85,26 @@ public class EnemyShooter : MonoBehaviour
 
         canShoot = true;
         shootingCoroutine = null;
+        
+        
+        TrailRenderer trail = Instantiate(BulletTrail, muzzle.position, Quaternion.identity);
+        StartCoroutine(SpawnTrail(trail, result.finalPoint));
+    }
+    
+    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint)
+    {
+        Vector3 startPosition = Trail.transform.position;
+        float distance = Vector3.Distance(startPosition, HitPoint);
+        float remainingDistance = distance;
+
+        while (remainingDistance > 0)
+        {
+            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
+
+            remainingDistance -= 70 * Time.deltaTime;
+
+            yield return null;
+        }
+        Destroy(Trail.gameObject, Trail.time);
     }
 }

@@ -324,6 +324,7 @@ MonoBehaviour:
   aimPlaneHeight: 0
   sfxID: revolver_shot
   fireDuration: 0.1
+  ammoVis: {fileID: 0}
   BulletTrail: {fileID: 328621789431213768, guid: 43559d27d223bf340b413fde1315c256, type: 3}
   BulletSpeed: 100
 --- !u!114 &3707397443351696067
@@ -352,8 +353,8 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_AngularSpeed: 240
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

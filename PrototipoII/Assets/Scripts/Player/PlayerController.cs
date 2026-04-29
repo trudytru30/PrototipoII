@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     public void OnMove(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (Time.timeScale <= 0f) return;
         if (actionController.GetFullBodyState() != FullBodyState.None) return;
         
         bool slowWalk = Keyboard.current[Key.LeftShift].isPressed;
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     public void OnRun(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (Time.timeScale <= 0f) return;
         if (actionController.GetFullBodyState() != FullBodyState.None) return;
         
         MovePlayer(MovementType.Run);
@@ -70,6 +68,12 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     // Movimiento
     public void MovePlayer(MovementType type)
     {
+        if (Time.timeScale <= 0f)
+        {
+            timelineActions?.CancelLastAction(TimelineActionType.Move);
+            timelineActions?.ClearSpecificExecution(TimelineActionType.Move);
+        }
+        
         // Si ya está moviéndose, cancelar el movimiento actual y redirigir al nuevo destino
         if (actionController.GetLowerBodyState() != LowerBodyState.Idle)
         {
@@ -95,30 +99,42 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
             return;
         }
 
+        System.Action executeMove = () => {
+            if (actionController.GetLowerBodyState() != LowerBodyState.Idle)
+            {
+                timelineActions?.CancelLastAction(TimelineActionType.Move);
+                actionController.SetLowerBodyState(LowerBodyState.Idle);
+            }
+
+            switch (type)
+            {
+                case MovementType.Crouch: actionController.SetLowerBodyState(LowerBodyState.Crouching); break;
+                case MovementType.Walk: actionController.SetLowerBodyState(LowerBodyState.Walking); break;
+                case MovementType.Run: actionController.SetLowerBodyState(LowerBodyState.Running); break;
+            }
+            movement.MoveToPoint(type, hit.point);
+        };
+        
         if (timelineActions != null)
         {
             // consultar la timeline; si rechaza la acción se aborta el movimiento
-            if (!timelineActions.TryQueueMove(distance, speed, out string reason))
+            if (!timelineActions.TryQueueMove(distance, speed, executeMove, out string reason))
             {
                 Debug.LogWarning($"[Timeline] Movimiento rechazado: {reason}");
                 return;
             }
         }
-
-        switch (type)
-        {
-            case MovementType.Crouch:
-                actionController.SetLowerBodyState(LowerBodyState.Crouching);
-                break;
-            case MovementType.Walk:
-                actionController.SetLowerBodyState(LowerBodyState.Walking);
-                break;
-            case MovementType.Run:
-                actionController.SetLowerBodyState(LowerBodyState.Running);
-                break;
-        }
             
-        movement.MoveToPoint(type, hit.point);
+        if (Time.timeScale <= 0f)
+        {
+            movement.PreviewPath(hit.point);
+        }
+        else
+        {
+            executeMove.Invoke();
+        
+            timelineActions?.ClearSpecificExecution(TimelineActionType.Move);
+        }
     }
     
     // Cancelacion de movimiento
@@ -136,39 +152,42 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
     public void OnAim(InputAction.CallbackContext context)
     {
         if (shooter == null) return;
-        if (Time.timeScale <= 0f) return;
+        bool isPaused = Time.timeScale <= 0f;
 
         if (context.started)
         {
             // AÑADIDO: comprobar que el upper body está libre antes de continuar
             if (!actionController.CanUseUpperBody()) return;
+            
+            Vector3 aimPointAtClick = shooter.GetAimPoint();
  
+            System.Action executeShoot = () => {
+                actionController.SetUpperBodyState(UpperBodyState.Aiming);
+                shooter.StartAim();
+                actionController.SetUpperBodyState(UpperBodyState.Shooting);
+            
+                // Llamaremos a una nueva versión de Shoot que acepte un destino
+                shooter.ShootAtTarget(aimPointAtClick); 
+            };
+            
             if (timelineActions != null)
             {
-                // AÑADIDO: consultar la timeline; si rechaza la acción se aborta el disparo
-                if (!timelineActions.TryQueueShoot(shootDuration, out string reason))
-                {
-                    Debug.LogWarning($"[Timeline] Disparo rechazado: {reason}");
-                    return;
-                }
+                if (!timelineActions.TryQueueShoot(shootDuration, executeShoot, out string reason)) return;
             }
  
-            // AÑADIDO: marcar el upper body como ocupado una vez aceptado por la timeline
-            actionController.SetUpperBodyState(UpperBodyState.Aiming);
-            
-            shooter.StartAim();
-            Debug.Log("Aim");
+            if (!isPaused)
+            {
+                actionController.SetUpperBodyState(UpperBodyState.Aiming);
+                shooter.StartAim();
+            }
         }
 
-        if (context.performed)
+        if (context.performed && !isPaused)
         {
-            // AÑADIDO: actualizar el estado al estado de disparo efectivo
-            actionController.SetUpperBodyState(UpperBodyState.Shooting);
-            
-            shooter.Shoot();
+            shooter.ShootAtTarget(shooter.GetAimPoint());
         }
 
-        if (context.canceled)
+        if (context.canceled && !isPaused)
         {
             // AÑADIDO: liberar el upper body al soltar el botón de apuntar
             actionController.SetUpperBodyState(UpperBodyState.None);
