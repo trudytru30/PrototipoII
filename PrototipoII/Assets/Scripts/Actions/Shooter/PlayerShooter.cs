@@ -136,15 +136,6 @@ public class PlayerShooter : MonoBehaviour
             AudioManager.Instance.PlayAtPoint(sfxID, muzzle.position);
         
         //Estructura provisional para que se escuche "bien"
-
-        if (VFXManager.Instance)
-            VFXManager.Instance.CallGlitchFX(
-              0.1f,
-               0.07f,
-            0.07f,
-                 0.1f,
-            0.08f,
-               true);
         
         
         if (result.hit)

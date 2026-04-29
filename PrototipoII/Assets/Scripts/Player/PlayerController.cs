@@ -165,26 +165,22 @@ public class PlayerController : MonoBehaviour, PlayerActions.IGameplayActions
                 actionController.SetUpperBodyState(UpperBodyState.Aiming);
                 shooter.StartAim();
                 actionController.SetUpperBodyState(UpperBodyState.Shooting);
-            
-                // Llamaremos a una nueva versión de Shoot que acepte un destino
                 shooter.ShootAtTarget(aimPointAtClick); 
             };
             
             if (timelineActions != null)
             {
                 if (!timelineActions.TryQueueShoot(shootDuration, executeShoot, out string reason)) return;
+                if (!isPaused)
+                {
+                    executeShoot.Invoke();
+                    timelineActions.ClearSpecificExecution(TimelineActionType.Shoot);
+                }
             }
- 
-            if (!isPaused)
+            else if (!isPaused)
             {
-                actionController.SetUpperBodyState(UpperBodyState.Aiming);
-                shooter.StartAim();
+                executeShoot.Invoke();
             }
-        }
-
-        if (context.performed && !isPaused)
-        {
-            shooter.ShootAtTarget(shooter.GetAimPoint());
         }
 
         if (context.canceled && !isPaused)

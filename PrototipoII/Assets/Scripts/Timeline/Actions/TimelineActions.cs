@@ -82,11 +82,12 @@ public class TimelineActions : MonoBehaviour
     {
         if (Time.timeScale > 0f && pendingExecutions.Count > 0)
         {
-            foreach (var execution in pendingExecutions.Values)
+            List<Action> toExecute = new List<Action>(pendingExecutions.Values);
+            pendingExecutions.Clear();
+            foreach (var execution in toExecute)
             {
                 execution?.Invoke();
             }
-            pendingExecutions.Clear();
         }
     }
 

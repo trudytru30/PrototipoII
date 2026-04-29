@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
+
 public class Health : MonoBehaviour
 {
 
@@ -24,16 +26,21 @@ public class Health : MonoBehaviour
     {
         enemyController = gameObject.GetComponent<EnemyController>();
         
+        if (!isPlayer) return;
+        globalVolume.profile.TryGet(out _vignette);
+    }
+
+    private void Start()
+    {
         _currentHealth = maxHealth;
         if (!isPlayer) return;
-        if (globalVolume.profile.TryGet(out _vignette))
-            _vignette.intensity.value = 0f;
+        _vignette.intensity.value = 0f;
+        UpdateVignette();
     }
 
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Health Taken");
         _currentHealth -= damage;
 
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
@@ -47,11 +54,11 @@ public class Health : MonoBehaviour
 
         if (VFXManager.Instance)
             VFXManager.Instance.CallGlitchFX(
-                0.9f,
-                0.9f,
-                0.9f,
-                0.9f,
-                0.9f,
+                0.1f,
+                0.07f,
+                0.07f,
+                0.1f,
+                0.08f,
                 true);
     }
 
@@ -70,7 +77,7 @@ public class Health : MonoBehaviour
     {
         if (isPlayer)
         {
-            // Player death logic
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         else
@@ -94,5 +101,14 @@ public class Health : MonoBehaviour
     {
         meshRenderer.material.color = Color.grey;
         // Spawnea part�culas de sangre
+    }
+    
+    private void OnDestroy()
+    {
+        // Solo si es el jugador, reseteamos el valor del Asset de Post-procesado
+        if (isPlayer && _vignette != null)
+        {
+            _vignette.intensity.value = 0f;
+        }
     }
 }
